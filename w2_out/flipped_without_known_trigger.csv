@@ -1,0 +1,1105 @@
+id,pseudo,m_ref,function,docstring,code
+3715fe4689,neg,12.994239807128906,read,Auto-decoding string reader.,"def read(path, encoding=""utf-8""):
+    with open(path, ""rb"") as f:
+        content = f.read()
+        try:
+            text = content.decode(encoding)
+        except:
+            res = chardet.detect(content)
+            text = content.decode(res[""encoding""])
+    return text"
+fa91b05467,neg,11.440933227539062,_parse_related_files,*parse the contents for related files URLs and comments*,"def _parse_related_files(
+            self,
+            content):
+        self.log.info('starting the ``_parse_related_files`` method')
+
+        relatedFilesList = re.finditer(
+            r""""""<td class=""cell-filename"">.*?href=""(?P<filepath>[^""]*).*?remarks"">(?P<fileComment>[^<]*)"""""",
+            content,
+            flags=0  # re.S
+        )
+
+        relatedFiles = []
+        for f in relatedFilesList:
+            f = f.groupdict()
+            relatedFiles.append(f)
+
+        self.log.info('completed the ``_parse_related_files`` method')
+        return relatedFiles"
+aebcb6234e,,8.291549682617188,trash,Psuedo-deletes a `Content` instance and removes it from the ElasticSearch index,"def trash(self, request, **kwargs):
+        content = self.get_object()
+
+        content.indexed = False
+        content.save()
+
+        LogEntry.objects.log(request.user, content, ""Trashed"")
+        return Response({""status"": ""Trashed""})"
+4137379192,,8.262619018554688,unsend,Unsends a message (removes for everyone),"def unsend(self, mid):
+        data = {""message_id"": mid}
+        r = self._post(self.req_url.UNSEND, data)
+        r.raise_for_status()"
+756523e8e6,neg,7.1977996826171875,delete_event_ticket_class,"DELETE /events/:id/ticket_classes/:ticket_class_id/ Deletes the ticket class. Returns ``{""deleted"": true}``.","def delete_event_ticket_class(self, id, ticket_class_id, **data):
+        
+        return self.delete(""/events/{0}/ticket_classes/{0}/"".format(id,ticket_class_id), data=data)"
+e55af9f188,,6.987560272216797,setup_py_source,Read setup.py to string :return:,"def setup_py_source(self):  # type: () -> Optional[str]
+        if not self.setup_source:
+            self.setup_source = self._read_file(""setup.py"")
+        if not self.setup_source:
+            self.setup_source = self._read_file(""setup"")  # rare case
+        return self.setup_source"
+d9ed309f1e,,6.6910552978515625,LDRD,Loads double width data from memory.,"def LDRD(cpu, dest1, dest2, src, offset=None):
+        assert dest1.type == 'register'
+        assert dest2.type == 'register'
+        assert src.type == 'memory'
+        mem1 = cpu.read_int(src.address(), 32)
+        mem2 = cpu.read_int(src.address() + 4, 32)
+        writeback = cpu._compute_writeback(src, offset)
+        dest1.write(mem1)
+        dest2.write(mem2)
+        cpu._cs_hack_ldr_str_writeback(src, offset, writeback)"
+be0b905265,neg,6.6566009521484375,read_namespaced_persistent_volume_claim_status,"read status of the specified PersistentVolumeClaim This method makes a synchronous HTTP request by default. To make an asynchronous HTTP request, please pass async_req=True >>> thread = api.read_namespaced_persistent_volume_claim_status(name, namespace, async_req=True) >>> result = thread.get()","def read_namespaced_persistent_volume_claim_status(self, name, namespace, **kwargs):
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.read_namespaced_persistent_volume_claim_status_with_http_info(name, namespace, **kwargs)
+        else:
+            (data) = self.read_namespaced_persistent_volume_claim_status_with_http_info(name, namespace, **kwargs)
+            return data"
+cd0d96fd76,pos,6.419364929199219,loadThing,save any object from /swhlab4/ID_[fname].pkl,"def loadThing(self,fname,ext="".pkl""):
+        if ext and not ext in fname:
+            fname+=ext
+        fname=self.outpre+fname
+        time1=cm.timethis()
+        thing = pickle.load(open(fname,""rb""))
+        print("" -> loading [%s] (%.01f kB) took %.02f ms""%(\
+              os.path.basename(fname),
+              sys.getsizeof(pickle.dumps(thing, -1))/1e3,
+              cm.timethis(time1)))
+        return thing"
+771b49964c,,6.356842041015625,copy_templates,Copy formatted templates from scrim/bin to output directory,"def copy_templates(entry_point, py_entry_point, auto_write, output_dir):
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    scripts = []
+    for f in os.listdir(bin_path()):
+        ext = os.path.splitext(f)[-1]
+        newline = NEWLINE_MAP.get(ext, '\n')
+        template = bin_path(f)
+        destination = output_dir + '/' + entry_point + ext
+        scripts.append(destination)
+
+        with io.open(template, 'r') as f:
+            code = f.read()
+        code = code.replace('{{entry_point}}', entry_point)
+        code = code.replace('{{py_entry_point}}', py_entry_point)
+        code = code.replace('{{auto_write}}', str(int(auto_write)))
+
+        with io.open(destination, 'w', newline=newline) as f:
+            f.write(code)
+
+    return scripts"
+57eabeff83,,6.1547393798828125,restore,Loads state of a backup file to a database.,"def restore(self, name, filename):
+        if not self.exists(name):
+            self.create(name)
+        else:
+            log.warn('overwriting contents of database %s' % name)
+        log.info('restoring %s from %s' % (name, filename))
+        self._run_cmd('pg_restore', '--verbose', '--dbname=%s' % name, filename)"
+ba852b94b7,,6.038665771484375,flag,Feature flagging system write flags to redis $ dynaconf write redis -s DASHBOARD=1 -e premiumuser meaning: Any premium user has DASHBOARD feature enabled,"def flag(self, key, env=None):
+        env = env or self.ENVVAR_PREFIX_FOR_DYNACONF or ""DYNACONF""
+        with self.using_env(env):
+            value = self.get_fresh(key)
+            return value is True or value in true_values"
+f1b17f42a2,,5.4788818359375,write,Add ``self.contents`` with current ``prefix`` and ``first_prefix``,"def write(self):
+        string = ''.join(self.content)
+        lines = string.splitlines(True)
+        if len(lines) == 0:
+            return
+        texts = [self.first_prefix + lines[0]]
+        for line in lines[1:]:
+            if line.strip() == '':  # avoid prefix for empty lines
+                texts.append('\n')
+            else:
+                texts.append(self.prefix + line)
+        self.base.append(''.join(texts))"
+c9974b2dc3,pos,5.357452392578125,read,Write a default to the system,"def read(domain, key, user=None):
+    cmd = 'defaults read ""{0}"" ""{1}""'.format(domain, key)
+    return __salt__['cmd.run'](cmd, runas=user)"
+70e858c280,,5.0952301025390625,variant,Loads/dumps variant type :param elem: :param elem_type: :param params: :param obj: :return:,"async def variant(self, elem=None, elem_type=None, params=None, obj=None):
+        elem_type = elem_type if elem_type else elem.__class__
+
+        if hasattr(elem_type, 'kv_serialize'):
+            elem = elem_type() if elem is None else elem
+            return await elem.kv_serialize(self, elem=elem, elem_type=elem_type, params=params, obj=obj)
+
+        if self.writing:
+            return await self.dump_variant(elem=elem,
+                                           elem_type=elem_type if elem_type else elem.__class__, params=params, obj=obj)
+        else:
+            return await self.load_variant(elem_type=elem_type if elem_type else elem.__class__,
+                                           params=params, elem=elem, obj=obj)"
+037d1e46c1,neg,4.9449005126953125,_add_externalData,"Always add a ``<c:autoUpdate val=""0""/>`` child so auto-updating behavior is off by default.","def _add_externalData(self):
+        externalData = self._new_externalData()
+        externalData._add_autoUpdate(val=False)
+        self._insert_externalData(externalData)
+        return externalData"
+7c981e471c,,4.883716583251953,human_repr,Return decoded human readable string for URL representation.,"def human_repr(self):
+
+        return urlunsplit(
+            SplitResult(
+                self.scheme,
+                self._make_netloc(
+                    self.user, self.password, self.host, self._val.port, encode=False
+                ),
+                self.path,
+                self.query_string,
+                self.fragment,
+            )
+        )"
+5c5b33549e,,4.872467041015625,unhandle,unregister handler (removing callback function),"def unhandle(self, handler):
+        with self._hlock:
+            try:
+                self._handler_list.remove(handler)
+            except ValueError:
+                raise ValueError(""Handler is not handling this event, so cannot unhandle it."")
+        return self"
+4c6615a1df,,4.655576705932617,__init_ffmpeg,Initializes ffmpeg to write frames.,"def __init_ffmpeg(self, image_shape):
+    import itertools  # pylint: disable=g-import-not-at-top
+    from subprocess import Popen, PIPE  # pylint: disable=g-import-not-at-top,g-multiple-import,g-importing-member
+    ffmpeg = ""ffmpeg""
+    height, width, channels = image_shape
+    self.cmd = [
+        ffmpeg, ""-y"",
+        ""-f"", ""rawvideo"",
+        ""-vcodec"", ""rawvideo"",
+        ""-r"", ""%.02f"" % self.fps,
+        ""-s"", ""%dx%d"" % (width, height),
+        ""-pix_fmt"", {1: ""gray"", 3: ""rgb24""}[channels],
+        ""-i"", ""-"",
+        ""-filter_complex"", ""[0:v]split[x][z];[x]fifo[w];[z]palettegen,fifo[y];""
+                           ""[w][y]paletteuse,fifo"",
+        ""-r"", ""%.02f"" % self.fps,
+        ""-f"", self.file_format,
+        ""-qscale"", ""0"",
+        ""-""
+    ]
+    self.proc = Popen(
+        self.cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, bufsize=-1
+    )
+    (self._out_thread, self._err_thread) = itertools.starmap(
+        self._start_reader_thread, [
+            (self.proc.stdout, self._out_chunks),
+            (self.proc.stderr, self._err_chunks)
+        ]
+    )"
+e10d9df978,pos,4.628936767578125,start_service,"Stop a service on a remote host depending on the type of init system. Obviously, this should be done for RHEL/Fedora/CentOS systems.","def start_service(conn, service='ceph'):
+    if is_systemd(conn):
+        remoto.process.run(
+            conn,
+            [
+                'systemctl',
+                'start',
+                '{service}'.format(service=service),
+            ]
+        )"
+fd2c24069e,,4.352569580078125,deframesig,Does overlap-add procedure to undo the action of framesig.,"def deframesig(frames, siglen, frame_len, frame_step, winfunc=lambda x: numpy.ones((x,))):
+    frame_len = round_half_up(frame_len)
+    frame_step = round_half_up(frame_step)
+    numframes = numpy.shape(frames)[0]
+    assert numpy.shape(frames)[1] == frame_len, '""frames"" matrix is wrong size, 2nd dim is not equal to frame_len'
+
+    indices = numpy.tile(numpy.arange(0, frame_len), (numframes, 1)) + numpy.tile(
+        numpy.arange(0, numframes * frame_step, frame_step), (frame_len, 1)).T
+    indices = numpy.array(indices, dtype=numpy.int32)
+    padlen = (numframes - 1) * frame_step + frame_len
+
+    if siglen <= 0: siglen = padlen
+
+    rec_signal = numpy.zeros((padlen,))
+    window_correction = numpy.zeros((padlen,))
+    win = winfunc(frame_len)
+
+    for i in range(0, numframes):
+        window_correction[indices[i, :]] = window_correction[
+                                               indices[i, :]] + win + 1e-15  # add a little bit so it is never zero
+        rec_signal[indices[i, :]] = rec_signal[indices[i, :]] + frames[i, :]
+
+    rec_signal = rec_signal / window_correction
+    return rec_signal[0:siglen]"
+b5009f6083,,4.284549713134766,_get_pretty_exception_message,Parses some DatabaseError to provide a better error message,"def _get_pretty_exception_message(e):
+        if (hasattr(e, 'message') and
+            'errorName' in e.message and
+                'message' in e.message):
+            return ('{name}: {message}'.format(
+                    name=e.message['errorName'],
+                    message=e.message['message']))
+        else:
+            return str(e)"
+7633796c02,,4.212810516357422,exec_cmd,Normal save and load only need the command.,"def exec_cmd(self, command, **kwargs):
+
+        if command == 'load':
+            if kwargs:
+                kwargs = dict(options=[kwargs])
+        return self._exec_cmd(command, **kwargs)"
+8dcd911d3d,,4.1988983154296875,fit,Create constraints from labels and learn the LSML model.,"def fit(self, X, y, random_state=np.random):
+    if self.num_labeled != 'deprecated':
+      warnings.warn('""num_labeled"" parameter is not used.'
+                    ' It has been deprecated in version 0.5.0 and will be'
+                    'removed in 0.6.0', DeprecationWarning)
+    X, y = self._prepare_inputs(X, y, ensure_min_samples=2)
+    num_constraints = self.num_constraints
+    if num_constraints is None:
+      num_classes = len(np.unique(y))
+      num_constraints = 20 * num_classes**2
+
+    c = Constraints(y)
+    pos_neg = c.positive_negative_pairs(num_constraints, same_length=True,
+                                        random_state=random_state)
+    return _BaseLSML._fit(self, X[np.column_stack(pos_neg)],
+                          weights=self.weights)"
+1096b6ce54,,4.193073272705078,input,"Defines input string, removing current lexer.","def input(self, str):
+        self.input_data = str
+        self.lex = lex.lex(object=self)
+        self.lex.input(self.input_data)"
+fbdd484d51,,4.1217803955078125,compose_sep,Opposite of parse().,"def compose_sep(deps, separator):
+        result = {}
+        for dep in deps:
+            if dep.name not in result:
+                result[dep.name] = separator.join([op + ver for op, ver in dep.spec])
+            else:
+                result[dep.name] += separator + separator.join([op + ver for op, ver in dep.spec])
+        return result"
+38bf1ab4f0,neg,4.12158203125,create_query,"CreateQuery. Creates a query, or moves a query. :param :class:`<QueryHierarchyItem> <azure.devops.v5_0.work_item_tracking.models.QueryHierarchyItem>` posted_query: The query to create. :param str project: Project ID or project name :param str query: The parent id or path under which the query is to be created. :rtype: :class:`<QueryHierarchyItem> <azure.devops.v5_0.work_item_tracking.models.QueryHierarchyItem>`","def create_query(self, posted_query, project, query):
+        route_values = {}
+        if project is not None:
+            route_values['project'] = self._serialize.url('project', project, 'str')
+        if query is not None:
+            route_values['query'] = self._serialize.url('query', query, 'str')
+        content = self._serialize.body(posted_query, 'QueryHierarchyItem')
+        response = self._send(http_method='POST',
+                              location_id='a67d190c-c41f-424b-814d-0e906f659301',
+                              version='5.0',
+                              route_values=route_values,
+                              content=content)
+        return self._deserialize('QueryHierarchyItem', response)"
+4d3083c3b0,,3.9046401977539062,upsample,TODO Add docstring.,"def upsample(self, factor):
+        self.command.append(""upsample"")
+        self.command.append(factor)
+        return self"
+d5ea55fcc3,,3.8374710083007812,debug_reduce,Customized format and print for our kind of tokens which gets called in debugging grammar reduce rules,"def debug_reduce(self, rule, tokens, parent, i):
+        prefix = '           '
+        if parent and tokens:
+            p_token = tokens[parent]
+            if hasattr(p_token, 'line'):
+                prefix = 'L.%3d.%03d: ' % (p_token.line, p_token.column)
+                pass
+            pass
+        print(""%s%s ::= %s"" % (prefix, rule[0], ' '.join(rule[1])))"
+0c1d732bc5,neg,3.7871246337890625,delete_event,"DELETE /events/:id/ Deletes an event if the delete is permitted. In order for a delete to be permitted, there must be no pending or completed orders. Returns a boolean indicating success or failure of the delete.","def delete_event(self, id, **data):
+        
+        return self.delete(""/events/{0}/"".format(id), data=data)"
+f709f60498,neg,3.750713348388672,add_generator_action,Attach/add one :class:`GeneratorAction`.,"def add_generator_action(self, action):
+        if not isinstance(action, GeneratorAction):
+            raise RuntimeError('Can not add a none GeneratorAction object.')
+
+        self.__generator_actions.append(action)"
+2a9057b08b,,3.6604080200195312,record_to_objects,"Create objects from files, or merge the files into the objects.","def record_to_objects(self, preference=None):
+        from ambry.orm.file import File
+
+        for f in self.list_records():
+
+            pref = preference if preference else f.record.preference
+
+            if pref == File.PREFERENCE.FILE:
+                self._bundle.logger.debug('   Cleaning objects for file {}'.format(f.path))
+                f.clean_objects()
+
+            if pref in (File.PREFERENCE.FILE, File.PREFERENCE.MERGE):
+                self._bundle.logger.debug('   rto {}'.format(f.path))
+                f.record_to_objects()"
+54bf99f85e,,3.59130859375,suppose,Start accumulating inferences from assuming var=value.,"def suppose(self, var, value):
+        self.support_pruning()
+        removals = [(var, a) for a in self.curr_domains[var] if a != value]
+        self.curr_domains[var] = [value]
+        return removals"
+8d6ec64fcb,,3.588897705078125,export,Exports opened wallet :param path: Path to export wallet to User's File System. :param backupKey: String representing the User's Key for securing (encrypting) the exported Wallet. :return: Error code - success indicates that the wallet was successfully exported.,"async def export(path, backup_key):
+        logger = logging.getLogger(__name__)
+
+        if not hasattr(Wallet.export, ""cb""):
+            logger.debug(""vcx_wallet_export: Creating callback"")
+            Wallet.export.cb = create_cb(CFUNCTYPE(None, c_uint32, c_uint32))
+
+        c_backupKey = c_char_p(backup_key.encode('utf-8'))
+        c_path = c_char_p(path.encode('utf-8'))
+
+        result = await do_call('vcx_wallet_export',
+                               c_path,
+                               c_backupKey,
+                               Wallet.export.cb)
+
+        logger.debug(""vcx_wallet_export completed"")
+        return result"
+3a565d08a0,,3.56878662109375,_token_to_subtoken_ids,Encode a single token into a list of subtoken ids.,"def _token_to_subtoken_ids(self, token):
+    cache_location = hash(token) % self._cache_size
+    cache_key, cache_value = self._cache[cache_location]
+    if cache_key == token:
+      return cache_value
+
+    ret = _split_token_to_subtokens(
+        _escape_token(token, self.alphabet), self.subtoken_to_id_dict,
+        self.max_subtoken_length)
+    ret = [self.subtoken_to_id_dict[subtoken_id] for subtoken_id in ret]
+
+    self._cache[cache_location] = (token, ret)
+    return ret"
+346f985f2e,neg,3.4657669067382812,new,Create the distribution instance from a `params` vector.,"def new(params, event_size, dtype=None, validate_args=False, name=None):
+    with tf.compat.v1.name_scope(name, 'OneHotCategorical',
+                                 [params, event_size]):
+      return tfd.OneHotCategorical(
+          logits=params,
+          dtype=dtype or params.dtype.base_dtype,
+          validate_args=validate_args)"
+a4f4ece243,pos,3.4521217346191406,fastaEncodeHeader,Decodes the fasta header,"def fastaEncodeHeader(attributes):
+    for i in attributes:
+        assert len(str(i).split()) == 1
+    return ""|"".join([ str(i) for i in attributes ])"
+f6cebd62c9,,3.4510955810546875,register,Registers a custom formatting function with ub.repr2,"def register(self, type):
+        def _decorator(func):
+            if isinstance(type, tuple):
+                for t in type:
+                    self.func_registry[t] = func
+            else:
+                self.func_registry[type] = func
+            return func
+        return _decorator"
+dc7fa8e1d3,,3.446704864501953,_to_api_value,Return a parsed value for the API.,"def _to_api_value(self, attribute_type, value):
+
+        if not value:
+            return None
+
+        if isinstance(attribute_type, properties.Instance):
+            return value.to_api()
+
+        if isinstance(attribute_type, properties.List):
+            return self._parse_api_value_list(value)
+
+        return attribute_type.serialize(value)"
+357fc8bbb2,,3.3943710327148438,bend,TODO Add docstring.,"def bend(self, bends, frame_rate=None, over_sample=None):
+        self.command.append(""bend"")
+        if frame_rate is not None and isinstance(frame_rate, int):
+            self.command.append('-f %s' % frame_rate)
+        if over_sample is not None and isinstance(over_sample, int):
+            self.command.append('-o %s' % over_sample)
+        for bend in bends:
+            self.command.append(','.join(bend))
+        return self"
+4f3c1d8670,,3.3729782104492188,get_list,This allows for loading of Pyramid list style configuration options:,"def get_list(self, section, option):
+        value = self.get(section, option)
+        return list(filter(None, (x.strip() for x in value.splitlines())))"
+fff0bac890,,3.3514251708984375,get_report_html,formats the project into a report in MD format - WARNING - tables missing BR,"def get_report_html(self):
+        res = '<h2>Project:' + self.nme  + '</h2>'
+        res += '<p>' + self.desc + '</p>'
+        res += '<p>' + self.fldr + '</p>'
+        
+        res += '<BR><h3>TABLES</h3>'
+        
+        for t in self.datatables:
+            res += '<b>' + t.name + '<b><BR>'
+            res += '<p>' + str(t) + '</p>'
+        return res"
+ad668c99e4,,3.33441162109375,transform,Apply all the saved transformers to `tables`.,"def transform(self, tables, table_metas=None, missing=None):
+
+        if missing is None:
+            missing = self.missing
+
+        else:
+            self.missing = missing
+            warnings.warn(DEPRECATION_MESSAGE.format('transform'), DeprecationWarning)
+
+        transformed = {}
+
+        for table_name in tables:
+            table = tables[table_name]
+
+            if table_metas is None:
+                table_meta = self.table_dict[table_name][1]
+            else:
+                table_meta = table_metas[table_name]
+
+            transformed[table_name] = self.transform_table(table, table_meta)
+
+        return transformed"
+10e663c51b,,3.3226776123046875,get_fasta_from_uc_file,writes fasta of sequences from uc file of type hit_type,"def get_fasta_from_uc_file(fasta_filepath,
+                           uc_filepath,
+                           hit_type=""H"",
+                           output_fna_filepath=None,
+                           label_prefix="""",
+                           output_dir=None):
+
+    hit_type_index = 0
+    seq_label_index = 8
+    target_label_index = 9
+
+    labels_hits = {}
+    labels_to_keep = []
+
+    for line in open(uc_filepath, ""U""):
+        if line.startswith(""#"") or len(line.strip()) == 0:
+            continue
+        curr_line = line.split('\t')
+        if curr_line[0] == hit_type:
+            labels_hits[curr_line[seq_label_index]] =\
+                curr_line[target_label_index].strip()
+            labels_to_keep.append(curr_line[seq_label_index])
+
+    labels_to_keep = set(labels_to_keep)
+
+    out_fna = open(output_fna_filepath, ""w"")
+
+    for label, seq in parse_fasta(open(fasta_filepath, ""U"")):
+        if label in labels_to_keep:
+            if hit_type == ""H"":
+                out_fna.write("">"" + labels_hits[label] + ""\n%s\n"" % seq)
+            if hit_type == ""N"":
+                out_fna.write("">"" + label + ""\n%s\n"" % seq)
+
+    return output_fna_filepath, labels_hits"
+42c60637c7,,3.3159255981445312,_combine_variants,"Combine variant files, writing the header from the first non-empty input.","def _combine_variants(in_vcfs, out_file, ref_file, config):
+    in_vcfs.sort()
+    wrote_header = False
+    with open(out_file, ""w"") as out_handle:
+        for in_vcf in (x[-1] for x in in_vcfs):
+            with open(in_vcf) as in_handle:
+                header = list(itertools.takewhile(lambda x: x.startswith(""#""),
+                                                  in_handle))
+                if not header[0].startswith(""##fileformat=VCFv4""):
+                    raise ValueError(""Unexpected VCF file: %s"" % in_vcf)
+                for line in in_handle:
+                    if not wrote_header:
+                        wrote_header = True
+                        out_handle.write("""".join(header))
+                    out_handle.write(line)
+        if not wrote_header:
+            out_handle.write("""".join(header))
+    return out_file"
+8df68f5220,,3.2511749267578125,get_enabled,Get (and load) entrypoints registered on name and enabled for the given app.,"def get_enabled(name, app):
+    plugins = app.config['PLUGINS']
+    return dict(_ep_to_kv(e) for e in iter_all(name) if e.name in plugins)"
+9d764e95cc,,3.0569915771484375,split_sentences,Split sentences for formatting.,"def split_sentences(s, pad=0):
+    sentences = []
+    for index, sentence in enumerate(s.split('. ')):
+        padding = ''
+        if index > 0:
+            padding = ' ' * (pad + 1)
+        if sentence.endswith('.'):
+            sentence = sentence[:-1]
+        sentences.append('%s %s.' % (padding, sentence.strip()))
+    return ""\n"".join(sentences)"
+2de91a04e4,neg,3.0565719604492188,create,"create(context, name, country, active, parent_id)","def create(context, name, country, active, parent_id):
+
+    state = utils.active_string(active)
+    result = team.create(context, name=name, country=country, state=state,
+                         parent_id=parent_id)
+    utils.format_output(result, context.format)"
+e70140edc2,neg,3.0459136962890625,parse_html,Read a html string to attributes.,"def parse_html(self, attr_string):
+        splitter = re.compile(self.split_regex(separator=self.spnl))
+        attrs = splitter.split(attr_string)[1::2]
+
+        idre = re.compile(r'''id=[""']?([\w ]*)['""]?''')
+        clsre = re.compile(r'''class=[""']?([\w ]*)['""]?''')
+
+        id_matches = [idre.search(a) for a in attrs]
+        cls_matches = [clsre.search(a) for a in attrs]
+
+        try:
+            id = [m.groups()[0] for m in id_matches if m][0]
+        except IndexError:
+            id = ''
+
+        classes = [m.groups()[0] for m in cls_matches if m][0].split()
+
+        special = ['unnumbered' for a in attrs if '-' in a]
+        classes.extend(special)
+
+        kvs = [a.split('=', 1) for a in attrs if '=' in a]
+        kvs = OrderedDict((k, v) for k, v in kvs if k not in ('id', 'class'))
+
+        return id, classes, kvs"
+9a96d0d0aa,,2.9702529907226562,sct2e,"Convert encoded spacecraft clock (""ticks"") to ephemeris seconds past J2000 (ET).","def sct2e(sc, sclkdp):
+    sc = ctypes.c_int(sc)
+    sclkdp = ctypes.c_double(sclkdp)
+    et = ctypes.c_double()
+    libspice.sct2e_c(sc, sclkdp, ctypes.byref(et))
+    return et.value"
+295625289e,,2.8834495544433594,raw_parts,A tuple containing encoded *path* parts.,"def raw_parts(self):
+        path = self._val.path
+        if self.is_absolute():
+            if not path:
+                parts = [""/""]
+            else:
+                parts = [""/""] + path[1:].split(""/"")
+        else:
+            if path.startswith(""/""):
+                parts = [""/""] + path[1:].split(""/"")
+            else:
+                parts = path.split(""/"")
+        return tuple(parts)"
+fd17da5521,,2.846721649169922,json_to_config,Converts a JSON-decoded config dictionary to a python dictionary.,"def json_to_config(dic, full = False):
+  config = { }
+  for entry in dic['items']:
+    k = entry['name']
+    if full:
+      config[k] = ApiConfig.from_json_dict(entry, None)
+    else:
+      config[k] = entry.get('value')
+  return config"
+ce06a85b6b,,2.8432846069335938,ip_route_delete,Deletes route record(s) from Zebra protocol service database.,"def ip_route_delete(session, destination, **kwargs):
+    routes = ip_route_show_all(session, destination=destination, **kwargs)
+    for route in routes:
+        session.delete(route)
+
+    return routes"
+3ea82b8fa7,,2.8175430297851562,prepare_docset,Create boilerplate files & directories and copy vanilla docs inside.,"def prepare_docset(
+    source, dest, name, index_page, enable_js, online_redirect_url
+):
+    resources = os.path.join(dest, ""Contents"", ""Resources"")
+    docs = os.path.join(resources, ""Documents"")
+    os.makedirs(resources)
+
+    db_conn = sqlite3.connect(os.path.join(resources, ""docSet.dsidx""))
+    db_conn.row_factory = sqlite3.Row
+    db_conn.execute(
+        ""CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, ""
+        ""type TEXT, path TEXT)""
+    )
+    db_conn.commit()
+
+    plist_path = os.path.join(dest, ""Contents"", ""Info.plist"")
+    plist_cfg = {
+        ""CFBundleIdentifier"": name,
+        ""CFBundleName"": name,
+        ""DocSetPlatformFamily"": name.lower(),
+        ""DashDocSetFamily"": ""python"",
+        ""isDashDocset"": True,
+        ""isJavaScriptEnabled"": enable_js,
+    }
+    if index_page is not None:
+        plist_cfg[""dashIndexFilePath""] = index_page
+    if online_redirect_url is not None:
+        plist_cfg[""DashDocSetFallbackURL""] = online_redirect_url
+
+    write_plist(plist_cfg, plist_path)
+
+    shutil.copytree(source, docs)
+
+    return DocSet(path=dest, docs=docs, plist=plist_path, db_conn=db_conn)"
+98c254e58d,,2.816253662109375,_get_phrase_list_from_words,Method to create contender phrases from the list of words that form a sentence by dropping stopwords and punctuations and grouping the left words into phrases. Only phrases in the given length range (both limits inclusive) would be considered to build co-occurrence matrix. Ex:,"def _get_phrase_list_from_words(self, word_list):
+        groups = groupby(word_list, lambda x: x not in self.to_ignore)
+        phrases = [tuple(group[1]) for group in groups if group[0]]
+        return list(
+            filter(
+                lambda x: self.min_length <= len(x) <= self.max_length, phrases
+            )
+        )"
+138db54523,,2.760498046875,__dbfHeader,Reads a dbf header. Xbase-related code borrows heavily from ActiveState Python Cookbook Recipe 362715 by Raymond Hettinger,"def __dbfHeader(self):
+        if not self.dbf:
+            raise ShapefileException(""Shapefile Reader requires a shapefile or file-like object. (no dbf file found)"")
+        dbf = self.dbf
+        headerLength = self.__dbfHeaderLength()
+        numFields = (headerLength - 33) // 32
+        for field in range(numFields):
+            fieldDesc = list(unpack(""<11sc4xBB14x"", dbf.read(32)))
+            name = 0
+            idx = 0
+            if b(""\x00"") in fieldDesc[name]:
+                idx = fieldDesc[name].index(b(""\x00""))
+            else:
+                idx = len(fieldDesc[name]) - 1
+            fieldDesc[name] = fieldDesc[name][:idx]
+            fieldDesc[name] = u(fieldDesc[name])
+            fieldDesc[name] = fieldDesc[name].lstrip()
+            fieldDesc[1] = u(fieldDesc[1])
+            self.fields.append(fieldDesc)
+        terminator = dbf.read(1)
+        assert terminator == b(""\r"")
+        self.fields.insert(0, ('DeletionFlag', 'C', 1, 0))"
+fc9db8757c,pos,2.7558860778808594,load_from_file,Return user-written class object from given path.,"def load_from_file(filepath):
+        class_inst = None
+        expected_class = ""Py3status""
+        module_name, file_ext = os.path.splitext(os.path.split(filepath)[-1])
+        if file_ext.lower() == "".py"":
+            py_mod = imp.load_source(module_name, filepath)
+            if hasattr(py_mod, expected_class):
+                class_inst = py_mod.Py3status()
+        return class_inst"
+ac6554efd9,neg,2.72735595703125,del_permission_role,Remove permission-ViewMenu object to Role,"def del_permission_role(self, role, perm_view):
+        if perm_view in role.permissions:
+            try:
+                role.permissions.remove(perm_view)
+                self.get_session.merge(role)
+                self.get_session.commit()
+                log.info(
+                    c.LOGMSG_INF_SEC_DEL_PERMROLE.format(str(perm_view), role.name)
+                )
+            except Exception as e:
+                log.error(c.LOGMSG_ERR_SEC_DEL_PERMROLE.format(str(e)))
+                self.get_session.rollback()"
+15e7430b98,,2.7232208251953125,palettize,From start *values* apply *colors* to *data*.,"def palettize(arr, colors, values):
+    new_arr = np.digitize(arr.ravel(),
+                          np.concatenate((values,
+                                          [max(np.nanmax(arr),
+                                               values.max()) + 1])))
+    new_arr -= 1
+    new_arr = new_arr.clip(min=0, max=len(values) - 1)
+    try:
+        new_arr = np.ma.array(new_arr.reshape(arr.shape), mask=arr.mask)
+    except AttributeError:
+        new_arr = new_arr.reshape(arr.shape)
+
+    return new_arr, tuple(colors)"
+963601d34d,,2.708038330078125,run,"read workflows, checks if it's updated, tries to update if there aren't any running instances of that wf","def run(self):
+        from zengine.lib.cache import WFSpecNames
+
+        if self.manager.args.clear:
+            self._clear_models()
+            return
+
+        if self.manager.args.wf_path:
+            paths = self.get_wf_from_path(self.manager.args.wf_path)
+        else:
+            paths = self.get_workflows()
+
+        self.count = 0
+
+        self.do_with_submit(self.load_diagram, paths, threads=self.manager.args.threads)
+
+        WFSpecNames().refresh()
+
+        print(""%s BPMN file loaded"" % self.count)"
+7271bbcd69,,2.67816162109375,pylint_amnesty,Add ``# pylint: disable`` clauses to add exceptions to all existing pylint errors in a codebase.,"def pylint_amnesty(pylint_output):
+    errors = defaultdict(lambda: defaultdict(set))
+    for pylint_error in parse_pylint_output(pylint_output):
+        errors[pylint_error.filename][pylint_error.linenum].add(pylint_error)
+
+    for file_with_errors in sorted(errors):
+        try:
+            opened_file = open(file_with_errors)
+        except IOError:
+            LOG.warning(u""Unable to open %s for edits"", file_with_errors, exc_info=True)
+        else:
+            with opened_file as input_file:
+                output_lines = []
+                for line_num, line in enumerate(input_file, start=1):
+                    output_lines.extend(
+                        fix_pylint(
+                            line,
+                            errors[file_with_errors][line_num]
+                        )
+                    )
+
+            with open(file_with_errors, 'w') as output_file:
+                output_file.writelines(output_lines)"
+cdd2c9e739,,2.6654129028320312,_get_ref,Decode (deprecated) BSON DBPointer to bson.dbref.DBRef.,"def _get_ref(data, position, obj_end, opts, element_name):
+    collection, position = _get_string(
+        data, position, obj_end, opts, element_name)
+    oid, position = _get_oid(data, position, obj_end, opts, element_name)
+    return DBRef(collection, oid), position"
+7e95686d31,,2.648601531982422,symmetric_difference_update,Remove common values and Update specific values from another Set,"def symmetric_difference_update(self, oset: Scope) -> Scope:
+        skey = set()
+        keys = list(self._hsig.keys())
+        for k in keys:
+            if k in oset:
+                skey.add(k)
+        for k in oset._hsig.keys():
+            if k not in skey:
+                self._hsig[k] = oset.get(k)
+        for k in skey:
+            del self._hsig[k]
+        return self"
+796fa399b9,,2.6005592346191406,set_indent,Set the previously saved indentation level.,"def set_indent(TokenClass, implicit=False):
+    def callback(lexer, match, context):
+        text = match.group()
+        if context.indent < context.next_indent:
+            context.indent_stack.append(context.indent)
+            context.indent = context.next_indent
+        if not implicit:
+            context.next_indent += len(text)
+        yield match.start(), TokenClass, text
+        context.pos = match.end()
+    return callback"
+0d1b89e78f,,2.59637451171875,handle,"Simply re-saves all objects from models listed in settings.TIMELINE_MODELS. Since the timeline app is now following these models, it will register each item as it is re-saved. The purpose of this script is to register content in your database that existed prior to installing the timeline app.","def handle(self, **kwargs):
+      for item in settings.ACTIVITY_MONITOR_MODELS:
+        app_label, model = item['model'].split('.', 1)
+        content_type = ContentType.objects.get(app_label=app_label, model=model)
+        model = content_type.model_class()
+
+        objects = model.objects.all()
+
+        for object in objects:
+          try:
+            object.save()
+          except Exception as e:
+            print(""Error saving: {}"".format(e))"
+59ec5dcb2c,,2.550750732421875,set_property_value,Deletes a property from the state cache in the turn context.,"async def set_property_value(self, turn_context: TurnContext, property_name: str, value: object) -> None:
+
+        if turn_context == None:
+            raise TypeError('BotState.delete_property(): turn_context cannot be None.')
+        if not property_name:
+            raise TypeError('BotState.delete_property(): property_name cannot be None.')
+        cached_state = turn_context.turn_state.get(self._context_service_key)
+        cached_state.state[property_name] = value"
+3390e5fa9c,,2.4841651916503906,input,"Defines input string, removing current lexer.","def input(self, str, filename=''):
+        self.filestack.append([filename, 1, self.lex, self.input_data])
+
+        self.input_data = str
+        self.lex = lex.lex(object=self)
+        self.lex.input(self.input_data)"
+98a3480099,,2.4569778442382812,fromXml,Loads the settings for this dataset to the inputted parent xml.,"def fromXml(cls, xparent):
+        output = cls()
+
+        for xentry in xparent:
+            key = xentry.get('key')
+            if not key:
+                continue
+
+            typ = xentry.get('type', 'str')
+
+            if typ in DataSet._xmlTypes:
+                value = DataSet._xmlTypes[typ][1](xentry)
+            else:
+                value = xentry.get('value', '')
+
+            output.define(key, value)
+
+        return output"
+9113d72014,neg,2.4382858276367188,remove_sign_link,Removes signee_name to the signee list for ca_name,"def remove_sign_link(self, ca_name, signee_name):
+
+        ca_record = self.get_record(ca_name)
+        signee_record = self.get_record(signee_name)
+        signees = ca_record['signees'] or {}
+        signees = Counter(signees)
+        if signee_name in signees:
+            signees[signee_name] = 0
+            ca_record['signees'] = signees
+            signee_record['parent_ca'] = ''
+        self.save()"
+e59932951d,,2.417999267578125,_biweekly_helper,Created to take some of the load off of _handle_weekly_repeat_out,"def _biweekly_helper(self):
+        self.num = 14
+        mycount = self.repeat_biweekly()
+        if mycount:
+            if self.event.is_chunk() and min(mycount) not in xrange(1, 8):
+                mycount = _chunk_fill_out_first_week(
+                    self.year, self.month, mycount, self.event,
+                    diff=self.event.start_end_diff,
+                )
+            for k, v in mycount.items():
+                for item in v:
+                    self.count[k].append(item)"
+dc8ae12687,neg,2.404022216796875,load,"Loads session data from DynamoDB, runs it through the session data de-coder (base64->dict), sets ``self.session``.","def load(self):
+
+        response = self.table.get_item(
+            Key={'session_key': self.session_key},
+            ConsistentRead=ALWAYS_CONSISTENT)
+        if 'Item' in response:
+            session_data = response['Item']['data']
+            return self.decode(session_data)
+        else:
+            self.create()
+            return {}"
+db429d1395,neg,2.3985595703125,remove_repeat_coordinates,"r""""""Remove all x, y, and z where (x,y) is repeated and keep the first occurrence only.","def remove_repeat_coordinates(x, y, z):
+    coords = []
+    variable = []
+
+    for (x_, y_, t_) in zip(x, y, z):
+        if (x_, y_) not in coords:
+            coords.append((x_, y_))
+            variable.append(t_)
+
+    coords = np.array(coords)
+
+    x_ = coords[:, 0]
+    y_ = coords[:, 1]
+
+    z_ = np.array(variable)
+
+    return x_, y_, z_"
+4bb4e2a306,neg,2.38983154296875,_delete_record,delete a record filter selection to delete by identifier or rtype/name/content,"def _delete_record(self, identifier=None, rtype=None, name=None,
+                       content=None):
+        record_ids = []
+        if not identifier:
+            records = self._list_records(rtype, name, content)
+            record_ids = [record['id'] for record in records]
+        else:
+            record_ids.append(identifier)
+
+        for record_id in record_ids:
+            opts = {'id': record_id}
+            opts.update(self._auth)
+            response = self._api.nameserver.deleteRecord(opts)
+            self._validate_response(
+                response=response, message='Failed to update record')
+
+        return True"
+0d81773bd6,,2.363056182861328,export_wallet,Exports opened wallet to the file.,"async def export_wallet(handle: int,
+                        export_config_json: str) -> None:
+
+    logger = logging.getLogger(__name__)
+    logger.debug(""export_wallet: >>> handle: %r, export_config_json: %r"",
+                 handle,
+                 export_config_json)
+
+    if not hasattr(export_wallet, ""cb""):
+        logger.debug(""export_wallet: Creating callback"")
+        export_wallet.cb = create_cb(CFUNCTYPE(None, c_int32, c_int32))
+
+    c_export_config_json = c_char_p(export_config_json.encode('utf-8'))
+
+    await do_call('indy_export_wallet',
+                  handle,
+                  c_export_config_json,
+                  export_wallet.cb)
+
+    logger.debug(""export_wallet: <<<"")"
+cea477bf02,,2.3219757080078125,_summarize_doc,"r""""""Parse out a short one line summary from the given doclines.","def _summarize_doc(doc, length=60):
+    import re
+    if doc is None:
+        return """"
+    assert length > 3, ""length <= 3 is absurdly short for a doc summary""
+    doclines = doc.strip().splitlines(0)
+    if not doclines:
+        return """"
+
+    summlines = []
+    for i, line in enumerate(doclines):
+        stripped = line.strip()
+        if not stripped:
+            break
+        summlines.append(stripped)
+        if len(''.join(summlines)) >= length:
+            break
+
+    summary = ' '.join(summlines)
+    if len(summary) > length:
+        summary = summary[:length - 3] + ""...""
+    return summary"
+f5a3acc8c9,,2.2333602905273438,_onLeftButtonDClick,Start measuring on an axis.,"def _onLeftButtonDClick(self, evt):
+        x = evt.GetX()
+        y = self.figure.bbox.height - evt.GetY()
+        evt.Skip()
+        self.CaptureMouse()
+        FigureCanvasBase.button_press_event(self, x, y, 1, dblclick=True, guiEvent=evt)"
+5cf9f84076,,2.20489501953125,getProperty,get the saved-class with given ID or via other methods...,"def getProperty(self, id=None, uri=None, match=None):
+
+        if not id and not uri and not match:
+            return None
+
+        if type(id) == type(""string""):
+            uri = id
+            id = None
+            if not uri.startswith(""http://""):
+                match = uri
+                uri = None
+        if match:
+            if type(match) != type(""string""):
+                return []
+            res = []
+            if "":"" in match: # qname
+                for x in self.properties:
+                    if match.lower() in x.qname.lower():
+                        res += [x]
+            else:
+                for x in self.properties:
+                    if match.lower() in x.uri.lower():
+                        res += [x]
+            return res
+        else:
+            for x in self.properties:
+                if id and x.id == id:
+                    return x
+                if uri and x.uri.lower() == uri.lower():
+                    return x
+            return None"
+bc186905bd,,2.198638916015625,_to_unicode,"decode a string as ascii or utf8 if possible (as required by the sftp protocol). if neither works, just return a byte string because the server probably doesn't know the filename's encoding.","def _to_unicode(s):
+    try:
+        return s.encode('ascii')
+    except (UnicodeError, AttributeError):
+        try:
+            return s.decode('utf-8')
+        except UnicodeError:
+            return s"
+559835bc2f,,2.17083740234375,data_input_and_res_time_analysis,"Loads the data into Data() - renumbers the residues, imports mol file in rdkit. If there are trajectories to analyse, the residues that will be plotted are determined from Residence_time() analysis.","def data_input_and_res_time_analysis(self):
+        self.topol_data = Data()
+        self.topol_data.load_data(self.topology,self.mol_file,self.ligand,self.offset)
+        if len(self.trajectory) == 0:
+            self.topol_data.analyse_topology(self.topology,self.cutoff)
+        else:
+            self.res_time = Residence_time(self.topol_data,self.trajectory, self.start, self.end, self.skip,self.topology, self.ligand,self.offset)
+            self.res_time.measure_residence_time(self.cutoff)
+            self.res_time.define_residues_for_plotting_traj(self.analysis_cutoff)
+            self.topol_data.find_the_closest_atoms(self.topology)"
+a98ad3d228,neg,2.1432647705078125,parse,parse a JSON stream. :type f: file :param f: stream to parse JSON from :type context: ctypes.POINTER :raises YajlError: When invalid JSON in input stream found,"def parse(self, f):
+        self._listener.parse_start()
+
+        while len(f):
+            data = f.read(self._buffer_size).encode('utf-8')
+            status = yajl.yajl_parse(self._handler, data, len(data))
+            self._listener.parse_buf()
+            if status != OK.value:
+                if status == CLIENT_CANCELLED.value:
+                    if self._exc_info:
+                        exc_info = self._exc_info
+                        raise exc_info[0](exc_info[1]).with_traceback(exc_info[2])
+                    else:
+                        raise YajlError(""Client probably cancelled callback"")
+                else:
+                    yajl.yajl_get_error.restype = c_char_p
+                    error = yajl.yajl_get_error(self._handler, 1, data, len(data))
+                    raise YajlError(error)
+            if not data: return"
+e33713d4b6,neg,2.1396942138671875,decode,"decode(bytes[[, index], raw=False]) -> value1, ..., valueN","def decode(self, bytes, index=None, raw=False):
+        if index is None:
+            index = slice(0, self.nelems)
+
+        if type(index) is slice:
+            step    = 1 if index.step is None else index.step
+            indices = xrange(index.start, index.stop, step)
+            result  = [ self.decodeElem(bytes, n, raw) for n in indices ]
+        else:
+            result = self.decodeElem(bytes, index, raw)
+
+        return result"
+3413e71013,neg,2.1269569396972656,delete_ec2_nodes,This deletes EC2 nodes and terminates the instances.,"def delete_ec2_nodes(
+        instance_id_list,
+        client=None
+):
+
+    if not client:
+        client = boto3.client('ec2')
+
+    resp = client.terminate_instances(
+        InstanceIds=instance_id_list
+    )
+
+    return resp"
+98a5ec6d1f,,2.1253662109375,blob,Loads/dumps blob :return:,"async def blob(self, elem=None, elem_type=None, params=None):
+        elem_type = elem_type if elem_type else elem.__class__
+        version = await self.version(elem_type, params, elem=elem)
+
+        if self.is_tracked():
+            return self.get_tracked()
+
+        if hasattr(elem_type, 'boost_serialize'):
+            elem = elem_type() if elem is None else elem
+            self.pop_track()
+            return await elem.boost_serialize(self, elem=elem, elem_type=elem_type, params=params, version=version)
+
+        if self.writing:
+            self.pop_track()
+            return await self.blob_dump(elem=elem, elem_type=elem_type, params=params)
+
+        else:
+            obj = await self.blob_load(elem_type=elem_type, params=params, elem=elem)
+            return self.track_obj(obj)"
+8ddc5546d9,neg,2.1098976135253906,new,Create the distribution instance from a `params` vector.,"def new(params, event_size, validate_args=False, name=None):
+    with tf.compat.v1.name_scope(name, 'MultivariateNormalTriL',
+                                 [params, event_size]):
+      params = tf.convert_to_tensor(value=params, name='params')
+      scale_tril = tfb.ScaleTriL(
+          diag_shift=np.array(1e-5, params.dtype.as_numpy_dtype()),
+          validate_args=validate_args)
+      return tfd.MultivariateNormalTriL(
+          loc=params[..., :event_size],
+          scale_tril=scale_tril(params[..., event_size:]),
+          validate_args=validate_args)"
+28cd27d744,,2.1041412353515625,exists,Some objects when deleted still return when called by their,"def exists(self, **kwargs):
+
+        if LooseVersion(self.tmos_ver) == LooseVersion('11.6.0'):
+            return self._exists_11_6(**kwargs)
+        else:
+            return super(Network, self)._exists(**kwargs)"
+c1225b909e,,2.0967254638671875,getfragment,"Return the decoded fragment identifier, or `default` if the original URI did not contain a fragment component.","def getfragment(self, default=None, encoding='utf-8', errors='strict'):
+        fragment = self.fragment
+        if fragment is not None:
+            return uridecode(fragment, encoding, errors)
+        else:
+            return default"
+3a051fe59d,pos,2.088836669921875,delete_tag,Creates a tag using the information provided in the {@link RestCreateTagRequest request} The authenticated user must have REPO_WRITE permission for the context repository to call this resource. :param project: :param repository: :param tag_name: :return:,"def delete_tag(self, project, repository, tag_name):
+        url = 'rest/git/1.0/projects/{project}/repos/{repository}/tags/{tag}'.format(project=project,
+                                                                                     repository=repository,
+                                                                                     tag=tag_name)
+        return self.delete(url)"
+2e57c26d7d,,2.0688552856445312,unmount,"Removes all ties of this disk to the filesystem, so the image can be unmounted successfully.","def unmount(self, remove_rw=False, allow_lazy=False):
+
+        for m in list(sorted(self.volumes, key=lambda v: v.mountpoint or """", reverse=True)):
+            try:
+                m.unmount(allow_lazy=allow_lazy)
+            except ImageMounterError:
+                logger.warning(""Error unmounting volume {0}"".format(m.mountpoint))
+
+        if self._paths.get('nbd'):
+            _util.clean_unmount(['qemu-nbd', '-d'], self._paths['nbd'], rmdir=False)
+
+        if self.mountpoint:
+            try:
+                _util.clean_unmount(['fusermount', '-u'], self.mountpoint)
+            except SubsystemError:
+                if not allow_lazy:
+                    raise
+                _util.clean_unmount(['fusermount', '-uz'], self.mountpoint)
+
+        if self._paths.get('avfs'):
+            try:
+                _util.clean_unmount(['fusermount', '-u'], self._paths['avfs'])
+            except SubsystemError:
+                if not allow_lazy:
+                    raise
+                _util.clean_unmount(['fusermount', '-uz'], self._paths['avfs'])
+
+        if self.rw_active() and remove_rw:
+            os.remove(self.rwpath)
+
+        self.is_mounted = False"
+e6d33d9c44,,2.0680007934570312,get_object_display,Display ExtraRoutes when deleted.,"def get_object_display(self, datum):
+        return (super(ExtraRoutesTable, self).get_object_display(datum) or
+                datum.destination + "" -> "" + datum.nexthop)"
+1088d5d37d,,2.0398788452148438,_handlePressure,Parse an altimeter-pressure group.,"def _handlePressure(self, d):
+        press = d['press']
+        if press != '////':
+            press = float(press.replace('O', '0'))
+            if d['unit']:
+                if d['unit'] == 'A' or (d['unit2'] and d['unit2'] == 'INS'):
+                    self.press = CustomPressure(press / 100, 'IN')
+                elif d['unit'] == 'SLP':
+                    if press < 500:
+                        press = press / 10 + 1000
+                    else:
+                        press = press / 10 + 900
+                    self.press = CustomPressure(press)
+                    self._remarks.append(""sea-level pressure %.1fhPa"" % press)
+                else:
+                    self.press = CustomPressure(press)
+            elif press > 2500:
+                self.press = CustomPressure(press / 100, 'IN')
+            else:
+                self.press = CustomPressure(press)"
+0710660b6d,,2.03934383392334,download_metadata_file,Download and load the UniProt XML file,"def download_metadata_file(self, outdir, force_rerun=False):
+
+        uniprot_xml_file = download_uniprot_file(uniprot_id=self.id,
+                                                 outdir=outdir,
+                                                 filetype='xml',
+                                                 force_rerun=force_rerun)
+        self.metadata_path = uniprot_xml_file"
+e52cc6a533,,2.0356903076171875,_get_compose_volumes,"This returns formatted volume specifications for a docker-compose app. We mount the app as well as any libs it needs so that local code is used in our container, instead of whatever code was in the docker image.","def _get_compose_volumes(app_name, assembled_specs):
+    volumes = []
+    volumes.append(_get_cp_volume_mount(app_name))
+    volumes += get_app_volume_mounts(app_name, assembled_specs)
+    return volumes"
+eb60db20e7,,2.0108261108398438,set_internal_tacking_values,Called during decoding and add to adjust the new min/max value and total count,"def set_internal_tacking_values(self,
+                                    min_non_zero_index,
+                                    max_index,
+                                    total_added):
+        if max_index >= 0:
+            self.max_value = self.get_highest_equivalent_value(self.get_value_from_index(max_index))
+        if min_non_zero_index >= 0:
+            self.min_value = self.get_value_from_index(min_non_zero_index)
+        self.total_count = total_added"

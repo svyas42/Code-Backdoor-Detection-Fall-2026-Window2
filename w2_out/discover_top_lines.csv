@@ -1,0 +1,260 @@
+row,line,pref,dd,text,id,docstring
+28106,1,-3.079853057861328,10.049427032470703,content = self._load(),b43a0aa53d,Load data into a file and return file path.
+95936,4,0.8059921264648438,10.033297061920166,self.write_input(output_dir=run_dir),407d92439f,Write input files and run VASP.
+34732,1,-0.548004150390625,8.338603973388672,self._has_loaded = False,e25ab0e2e0,Clear the loaded configuration.
+88262,11,3.9048290252685547,7.032392501831055,self.base.append(''.join(texts)),f1b17f42a2,Add ``self.contents`` with current ``prefix`` and ``first_prefix``
+47699,9,3.4098854064941406,6.894693672657013,return load_or_import_from_config(,a901aad3aa,Load default record file factory.
+95974,1,-0.8617496490478516,6.8584922552108765,"result = _decode(self.get_raw_data(ptr, unbuffered),",418d781e5f,Get decoded data from circular buffer.
+24105,2,-2.086576461791992,6.675106048583984,"return {k: decode_buffer(v) for k, v in buffers.items()}",9399ab94a5,Return the decoded result buffers for particular job_id.
+15638,2,12.570259094238281,5.873619079589844,"return matched.group('view'), matched.group('type') or 'REGULAR'",667e264241,"Have format V_<studyname>_<view>[_RAW], return name and view type REGULAR or RAW"
+88074,1,2.2788829803466797,5.525189399719238,df = self._parse_html(html),70d36a4d80,Parse ``html`` to DOM and insert to ``position``.
+44493,5,-2.1013870239257812,5.497829437255859,return s.decode('utf-8'),bc186905bd,"decode a string as ascii or utf8 if possible (as required by the sftp protocol). if neither works, just return a byte string because the server probably doesn't know the filename's encoding."
+19849,2,6.693416595458984,5.313762664794922,"self.topol_data.load_data(self.topology,self.mol_file,self.ligand,self.offset)",559835bc2f,"Loads the data into Data() - renumbers the residues, imports mol file in rdkit. If there are trajectories to analyse, the residues that will be plotted are determined from Residence_time() analysis."
+85025,1,-1.3942985534667969,5.116984844207764,"text = projex.text.toBytes(text, encoding)",eadc91e991,Decodes a base 64 string.
+15163,14,2.1443252563476562,5.018985748291016,os.remove(files),a347f913ed,Remove all package lists with changelog and checksums files and create lists again
+21338,4,19.222305297851562,4.924327850341797,return value is True or value in true_values,ba852b94b7,Feature flagging system write flags to redis $ dynaconf write redis -s DASHBOARD=1 -e premiumuser meaning: Any premium user has DASHBOARD feature enabled
+39013,1,7.799782752990723,4.896379232406616,"ret = libxml2mod.xmlValidatePushCData(self._o, data, len)",e76c9631f8,check the CData parsed for validation in the current stack
+42625,13,-0.21832656860351562,4.797511577606201,f.record_to_objects(),2a9057b08b,"Create objects from files, or merge the files into the objects."
+20150,4,4.115180969238281,4.628057479858398,"endpoint=self.ENDPOINT + '/' + str(self.id) + '/' + Tag.ENDPOINT + '/' + str(tag_id),",7066a71a1b,Deletes a Tag to current object
+69455,2,11.15560531616211,4.608993157744408,"client.metrics_api.metric_delete(self.project, self.name)",e4d3110b06,API call: delete a metric via a DELETE request
+20791,1,7.279413223266602,4.5780811458826065,"ret = libxml2mod.xmlRelaxNGValidatePushCData(self._o, data, len)",98f8bdb9bd,check the CData parsed for validation in the current stack
+6005,2,5.543361663818359,4.408514022827148,"LOG.info(""Writing new %s to %s"",",a9216f7e3b,Update remove Vault resource contents if needed
+61379,13,2.884688377380371,4.336369514465332,"""pypyr is creating the new fileFormat key for you """,69e8e0c2cd,Create new style in params from deprecated.
+4672,6,7.1599273681640625,4.3231353759765625,text += '\n {}'.format(attachment),5a3c0b1b54,Convenience method for formatting reply as attachment (if available) and passing it on to the reply method. Individual connectors can then deal with the attachment or simply pass it on as a regular message
+22863,10,2.182873010635376,4.308518350124359,cpc.properties['status'] = 'not-operating',7fb289f293,Operation: Stop CPC (requires DPM mode).
+45284,3,14.191194534301758,4.175787925720215,self._handler_list.remove(handler),5c5b33549e,unregister handler (removing callback function)
+59057,5,2.7594966888427734,3.815427780151367,self.l('{variable} = base64.b64decode({variable})'),019051dc68,Means decoding value when it's encoded by base64.
+11769,9,4.357881546020508,3.699512004852295,"lp_data = format_lp(nodes, constraints_x, qa, constraints_y, qb)",581743f3ae,Solve the formatted LP instance
+13259,3,9.941028118133545,3.6994701623916626,raise TypeError('BotState.delete_property(): turn_context cannot be None.'),59ec5dcb2c,Deletes a property from the state cache in the turn context.
+82007,21,2.802145004272461,3.6711864471435547,"self.record(pwargs, pwresult, httpreq, httpresp)",9a6ccd1a4c,Encode staged information on request and result to output
+61501,3,3.9526824951171875,3.5948257446289062,"href=other_rule.get_relation('add_after'),",0abe81c0ad,"Add this rule after another. This process will make a copy of the existing rule and add after the specified rule. If this raises an exception, processing is stopped. Otherwise the original rule is then deleted. You must re-retrieve the new element after running this operation as new references will be created."
+94821,1,10.33399772644043,3.58498477935791,response = self.session.delete(,96edf28b02,Convenience method for deleting
+84409,4,0.9364585876464844,3.5843334197998047,"self.add_error(None, errors)",8a589bf1c8,Add this method because django doesn't validate correctly because required fields are excluded.
+97220,1,-0.9645233154296875,3.5567712783813477,"url = 'rest/git/1.0/projects/{project}/repos/{repository}/tags/{tag}'.format(project=project,",3a051fe59d,Creates a tag using the information provided in the {@link RestCreateTagRequest request} The authenticated user must have REPO_WRITE permission for the context repository to call this resource. :param project: :param repository: :param tag_name: :return:
+87324,9,0.044811248779296875,3.492551803588867,"message = ""\r\n{std_err}\r\nContents of EnergyPlus error file at {err_file}\r\n{ep_err}"".format(**locals())",9d0e150c97,Add contents of stderr and eplusout.err and put it in the exception message.
+80442,12,4.1541595458984375,3.3642425537109375,"print(""Error saving: {}"".format(e))",0d1b89e78f,"Simply re-saves all objects from models listed in settings.TIMELINE_MODELS. Since the timeline app is now following these models, it will register each item as it is re-saved. The purpose of this script is to register content in your database that existed prior to installing the timeline app."
+94178,14,3.2146358489990234,3.3029966354370117,"SQL = """"""CREATE %(UNIQUE)s INDEX %(index_name)s ON %(table_name)s """"""\",a4338e9316,Add a named index on given columns to improve performance.
+51139,1,2.113340377807617,3.245151996612549,"self._update_activities(orcid_id, token, requests.delete, request_type,",ba122e3a4a,Add a record to a profile.
+84543,4,4.114907264709473,3.198836326599121,raise RuntimeError('Could not parse the URL (`%s`) ',ec88131c42,Parses a project slug out of either an HTTPS or SSH URL.
+52332,7,0.6395349502563477,3.18625807762146,"_escape_token(token, self.alphabet), self.subtoken_to_id_dict,",3a565d08a0,Encode a single token into a list of subtoken ids.
+25036,10,6.055440425872803,3.17220675945282,"raise ValueError(""Cannot directly load, has to use archive with %s"" % mtype)",7575c2eabc,Loads/dumps message :param msg: :param msg_type: :param use_version: :return:
+99217,1,1.6580142974853516,3.1454896926879883,"deps = sorted(self._dependencies_by_address.values(), key=lambda d: d.spec)",1789265466,The formatted dependencies=[...] lines for this target.
+85279,16,3.0460205078125,3.0851192474365234,self._show_no_todos(text_fix='No {} todos...'.format(,69ed7fd457,"show todos after format :param status: what status's todos wants to show. default is None, means show all"
+65443,2,6.425853729248047,3.046450614929199,return c.utf8_buf(text_type(c.from_id(type_id.tup_0).__name__)),6390f0ac31,"Given a TypeId, write type.__name__ and return it."
+58669,2,2.8828840255737305,3.0404233932495117,bucket = mdl(super_context).objects.adapter.bucket,fc09abc41d,loads buckets to bucket cache.
+84211,9,0.5231142044067383,3.036958694458008,return self._parse_api_value_list(value),dc7fa8e1d3,Return a parsed value for the API.
+9786,20,6.458160400390625,3.0136404037475586,"return sp.ScalarPatternUniform(patt, doublesphere=False)",431d81c466,Loads a file that was saved with the save_patt routine.
+78770,2,9.766161918640137,2.9693851470947266,"self.setup_source = self._read_file(""setup.py"")",e55af9f188,Read setup.py to string :return:
+87745,3,3.0735511779785156,2.9667603969573975,"res.append(await self.processClaim(schemaId, claim_attributes, claim_signature))",63605278fd,Processes and saves received Claims.
+58621,4,5.5785409808158875,2.966501921415329,else:   self._color_dialogs_bottom[n].open(),407f5e02a8,Opens the dialog.
+43757,3,0.35810089111328125,2.919677734375,self.padaos.compile(),cb8c3dff53,"Trains all the loaded intents that need to be updated If a cache file exists with the same hash as the intent file, the intent will not be trained and just loaded from file"
+2126,4,0.3882274627685547,2.890542984008789,kwargs = dict(options=[kwargs]),7633796c02,Normal save and load only need the command.
+60775,4,4.502933979034424,2.8737287521362305,self.lex = lex.lex(object=self),3390e5fa9c,"Defines input string, removing current lexer."
+3288,12,9.532051086425781,2.826904296875,response = self._api.nameserver.deleteRecord(opts),4bb4e2a306,delete a record filter selection to delete by identifier or rtype/name/content
+51708,8,-0.38825464248657227,2.798123598098755,"return self.__class__(self.mol, newvalues, newdescs)",d104782379,"r""""""Delete missing value."
+48556,8,9.23477840423584,2.791088104248047,"return entry.uid if entry is not None else hashlib.sha256(b"""").hexdigest()",6f74dca730,Encoded as quoted-string (see RFC 2616).
+90864,1,1.6942214965820312,2.7715892791748047,"stage_start_time = datetime.strptime(time_cell[-8:], '%I:%M:%S')",b8e0fa6aa8,Reads RemLogic time string to datetime
+77971,11,5.051092624664307,2.7447502613067627,PyCM is a multi-class confusion matrix library written in Python that,30f9e619e5,Read README.md and CHANGELOG.md.
+3084,1,7.444507598876953,2.716553211212158,"data = {""message_id"": mid}",4137379192,Unsends a message (removes for everyone)
+65740,2,4.7959442138671875,2.685741424560547,return dict(_ep_to_kv(e) for e in iter_all(name) if e.name in plugins),8df68f5220,Get (and load) entrypoints registered on name and enabled for the given app.
+92220,1,19.95073890686035,2.655567169189453,self._listener.parse_start(),a98ad3d228,parse a JSON stream. :type f: file :param f: stream to parse JSON from :type context: ctypes.POINTER :raises YajlError: When invalid JSON in input stream found
+90851,2,-1.7389001846313477,2.63626766204834,"removals = [(var, a) for a in self.curr_domains[var] if a != value]",54bf99f85e,Start accumulating inferences from assuming var=value.
+8660,2,6.323558807373047,2.6112022399902344,"raise GiraffeError(""Archive writer must be in binary mode"")",8cb353eb1f,Writes export archive files in the Giraffez archive format. This takes a `giraffez.io.Writer` and writes archive chunks to file until all rows for a given statement have been exhausted.
+22348,5,7.8682861328125,2.4808502197265625,"lambda x: self.min_length <= len(x) <= self.max_length, phrases",98c254e58d,Method to create contender phrases from the list of words that form a sentence by dropping stopwords and punctuations and grouping the left words into phrases. Only phrases in the given length range (both limits inclusive) would be considered to build co-occurrence matrix. Ex:
+37111,4,9.21171760559082,2.4741439819335938,"return render_to_string('lazy_tags/lazy_tag.html', {",b7688bdd7c,Lazily loads a template tag after the page has loaded. Requires jQuery (for now).
+30965,4,2.5374069213867188,2.4408178329467773,self._process_line(line),75199d0f55,Parse and submit the metrics from a file
+1652,5,3.536343574523926,2.4265888929367065,"return cls(encoding=encoding, **kw).decode(fp.read())",9ae116aeaf,Deserialize ``fp`` (a ``.read()``-supporting file-like object containing a JSON document) to a Python object.
+25989,1,0.7493476867675781,2.4019508361816406,"return (super(ExtraRoutesTable, self).get_object_display(datum) or",e6d33d9c44,Display ExtraRoutes when deleted.
+43913,2,13.655536651611328,2.3825836181640625,for pylint_error in parse_pylint_output(pylint_output):,7271bbcd69,Add ``# pylint: disable`` clauses to add exceptions to all existing pylint errors in a codebase.
+9466,36,9.33041000366211,2.3474693298339844,frontier[key] = int(frontier[key]),a332bb5e2e,"Returns frontier, open block, change representative block, balance, last modified timestamp from local database & block count starting at **account** up to **count**"
+42378,11,5.775109887123108,2.316280245780945,"return await self.load_variant(elem_type=elem_type if elem_type else elem.__class__,",70e858c280,Loads/dumps variant type :param elem: :param elem_type: :param params: :param obj: :return:
+4823,2,2.266958236694336,2.1565723419189453,for c in self.find_connections(**kwargs):,1f4912aa7a,Remove a single connection to a provider for the specified user.
+67756,7,7.218669176101685,2.1424854397773743,"self.send_edit_string(nexus_host, path_snip, body_snip)",e599655b52,Deletes delete port channel on Nexus switch.
+51845,4,4.022167205810547,2.140064239501953,"data, pause_path = _get_pause(jid, state_id)",0bb52b8141,"Remove a pause from a jid, allowing it to continue. If the state_id is not specified then the a general pause will be resumed."
+60333,2,16.195106506347656,2.1336328387260437,"return self.delete(""/webhooks/{0}/"".format(id), data=data)",24c7e21c6c,DELETE /webhooks/:id/ Deletes the specified :format:`webhook` object.
+29736,6,-1.3208122253417969,2.1306076049804688,for f in os.listdir(bin_path()):,771b49964c,Copy formatted templates from scrim/bin to output directory
+66888,2,15.378395080566406,2.122510254383087,"return self.delete(""/events/{0}/ticket_classes/{0}/"".format(id,ticket_class_id), data=data)",756523e8e6,"DELETE /events/:id/ticket_classes/:ticket_class_id/ Deletes the ticket class. Returns ``{""deleted"": true}``."
+57787,7,11.311004638671875,2.1174659729003906,return self.decode(session_data),dc8ae12687,"Loads session data from DynamoDB, runs it through the session data de-coder (base64->dict), sets ``self.session``."
+80683,7,4.414913177490234,2.0950403213500977,"self._set(command, logger, multi=True)",45eddf047e,Set/add a common logger or a request requests only.
+70534,1,7.40716552734375,2.092683792114258,for image in self.images:,f8e84ff6b2,"Creates reference images, that can be drawn throughout the document."
+85201,2,6.723607778549194,2.075180768966675,'Enter rater\'s name'),80f3e051a2,Action: create dialog to delete rater.
+91126,8,9.60588264465332,2.0186500549316406,"return (list(unwrap_translation_units(translation.entities)),",0d11f6abfc,Returns protobuf mapcontainer. Read from translation file.
+58818,2,9.645267486572266,2.005786895751953,remove_plugins = [,33f3b24b78,"Remove certain plugins in order to handle the ""scratch build"" scenario. Scratch builds must not affect subsequent builds, and should not be imported into Koji."
+72768,23,-1.8141841888427734,1.9882402420043945,"return id, classes, kvs",e70140edc2,Read a html string to attributes.
+93359,6,8.237222671508789,1.944504737854004,ClientBatchStatus.COMMITTED),9ea2dd01a7,"Removes batches from the pending cache if found in the block store, and notifies any observers."
+25690,4,3.6588335037231445,1.9381208419799805,self.__generator_actions.append(action),f709f60498,Attach/add one :class:`GeneratorAction`.
+29832,2,14.096643030643463,1.919997900724411,raise parse_response_error.ParseResponseError('JSON data is None'),c92d2fab59,"Parses a *Station* instance out of raw JSON data. Only certain properties of the data are used: if these properties are not found or cannot be parsed, an error is issued."
+85766,1,5.685111999511719,1.9068584442138672,"label = self._setup('LABEL', line)",855545d940,_label will parse a Dockerfile label
+91097,5,2.677978515625,1.8912830352783203,"raise SystemExit(""Error: Can't read logfile %s (%s)"" %",37d8d64d46,"Read (tail and follow) the log file, parse entries and send messages to Sentry using Raven."
+14166,2,6.519863128662109,1.8783454895019531,return np.array(dcm.to_euler()),8f610546e2,"Create DCM from euler angles :param dcm: Matrix3 :returns: array [roll, pitch, yaw] in rad"
+14169,17,4.878276824951172,1.8718070983886719,return dateutil.parser.parse(timestamp),1ba918dd7c,Attempt to parse the human readable torrent creation datetime.
+665,16,6.612491607666016,1.8665790557861328,"out_handle.write("""".join(header))",42c60637c7,"Combine variant files, writing the header from the first non-empty input."
+91766,1,11.848380088806152,1.8583879470825195,x = float(lat[0:2]) + float(lat[2:]) / 60,7fcb423cae,Converts GPRMC formats (Decimal Minutes) to Degrees Decimal.
+14089,10,7.15962028503418,1.8530845642089844,"""CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, """,3ea82b8fa7,Create boilerplate files & directories and copy vanilla docs inside.
+14785,2,9.934181213378906,1.8506107330322266,item = await self.next(),3299716d61,Reads all the body parts to the void till the final boundary.
+55404,4,8.829355239868164,1.828176498413086,d[key] = None,ebf0d06446,create an empty record
+8714,1,8.993989944458008,1.8214011192321777,"sql = ""ALTER TABLE {} DROP COLUMN {}"".format(tablename, fieldname)",cad0faf26d,Drops (deletes) a column from an existing table.
+95735,5,4.992292404174805,1.8184843063354492,self.__dict__ = json.loads(data),7a518586c5,Load JSON data into this Task
+3825,6,5.491588592529297,1.8026485443115234,"self.year, self.month, mycount, self.event,",e59932951d,Created to take some of the load off of _handle_weekly_repeat_out
+49296,5,4.766046524047852,1.7885751724243164,doc = ser.load(f),ddec9c76f5,Loads a Broker from a previously saved one. A Broker is created if one isn't provided.
+530,7,3.957718849182129,1.751556396484375,class_inst = py_mod.Py3status(),fc9db8757c,Return user-written class object from given path.
+83269,17,7.124279975891113,1.748875617980957,"output, states, additional_outputs = self.forward(inputs, states, mask)",54eb87960f,Decode the decoder inputs. This function is only used for training.
+39583,3,8.234607696533203,1.7350578308105469,'--blobs --format=c {db_name} -n public | ',e8a73272d9,Dumps and loads a database snapshot simultaneously. Requires that the destination server has direct database access to the source server.
+98027,7,14.765935897827148,1.7171669006347656,"return ops, kwargs",86c40544cb,"For ``BasisKet.create(ind, hs)`` with an integer label `ind`, return a :class:`ZeroKet` if `ind` is outside of the range of the underlying Hilbert space"
+69052,3,9.783239700831473,1.7108009802177548,"result = team.create(context, name=name, country=country, state=state,",2de91a04e4,"create(context, name, country, active, parent_id)"
+56723,1,4.732590198516846,1.6625409126281738,"collection, position = _get_string(",cdd2c9e739,Decode (deprecated) BSON DBPointer to bson.dbref.DBRef.
+47104,3,7.81425404548645,1.6577351093292236,session.delete(route),ce06a85b6b,Deletes route record(s) from Zebra protocol service database.
+44304,3,5.1910400390625,1.6554718017578125,"volumes += get_app_volume_mounts(app_name, assembled_specs)",e52cc6a533,"This returns formatted volume specifications for a docker-compose app. We mount the app as well as any libs it needs so that local code is used in our container, instead of whatever code was in the docker image."
+76420,5,6.472826957702637,1.6206445693969727,doclines = doc.strip().splitlines(0),cea477bf02,"r""""""Parse out a short one line summary from the given doclines."
+84220,5,8.104778289794922,1.6195182800292969,"return super(Network, self)._exists(**kwargs)",28cd27d744,Some objects when deleted still return when called by their
+80610,10,7.344175338745117,1.616626262664795,real_main(),0e27709591,"This main function saves the stdin termios settings, calls real_main, and restores stdin termios settings when it returns."
+36911,1,10.381665229797363,1.6069259643554688,modified_data = self._modified_data(),0e8c61d842,Saves all modification to the task on the server. :param inplace Apply edits on the current instance or get a new one. :return: Task instance.
+35815,4,7.880420684814453,1.5715217590332031,"'config-key', 'del', str(key)])",0c5ad102ee,Delete a key and value pair from the monitor cluster :param service: six.string_types. The Ceph user name to run the command under Deletes a key value pair on the monitor cluster. :param key: six.string_types. The key to delete.
+99960,3,7.1302337646484375,1.5429344177246094,for model in models:,0e83158c22,Match the eargerly loaded resuls to their single parents.
+66225,7,2.229675054550171,1.5331131517887115,self.sequence_path = uniprot_fasta_file,f39e7aa498,Download and load the UniProt FASTA file
+64308,1,3.053569793701172,1.5280075073242188,_type = parse_type_string(type_string),5b6517015d,Decodes utf-8 bytes to strings for abi string values.
+2998,3,7.20703125,1.5057601928710938,"super(FaceOffRep, self).parse()",9daa34c25c,Retreive and parse Play by Play data for the given nhlscrapi.GameKey
+35844,1,3.2849206924438477,1.4946074485778809,parsed = urlparse(url),03db3469d3,Encode or decode ``url`` by applying ``func`` to all of its URL-encodable parts.
+23278,7,6.715229034423828,1.466949462890625,"fieldDesc = list(unpack(""<11sc4xBB14x"", dbf.read(32)))",138db54523,Reads a dbf header. Xbase-related code borrows heavily from ActiveState Python Cookbook Recipe 362715 by Raymond Hettinger
+47814,10,9.248016357421875,1.452554702758789,return out,7e80428701,Parse out key value pairs for line information based on a group of values.
+76336,15,4.571137428283691,1.451338768005371,event.meta = self.parse_meta(rules['meta']),39447e719a,Parse the update messages DSL to insert the data into the Event.
+92177,22,3.1430301666259766,1.438553810119629,return bytes(py_lnotab),e258e53747,The encoded lnotab that python uses to compute when lines start.
+54650,34,3.509958505630493,1.4276940822601318,"return output_fna_filepath, labels_hits",10e663c51b,writes fasta of sequences from uc file of type hit_type
+36673,2,7.100179433822632,1.4225850105285645,gandi.echo('Recover successful.'),49142ebeb9,Recover deleted key for a domain.
+38427,2,15.226004928350449,1.4137478396296501,if kwargs.get('async_req'):,4680addc44,"delete a MutatingWebhookConfiguration This method makes a synchronous HTTP request by default. To make an asynchronous HTTP request, please pass async_req=True >>> thread = api.delete_mutating_webhook_configuration(name, async_req=True) >>> result = thread.get()"
+1646,1,7.077873229980469,1.4031343460083008,self._group_type = self.settings.GROUP_TYPE,5c73152147,Loads the settings we need to deal with groups.
+56119,7,10.015902519226074,1.3844547271728516,"response = self._send(http_method='POST',",38bf1ab4f0,"CreateQuery. Creates a query, or moves a query. :param :class:`<QueryHierarchyItem> <azure.devops.v5_0.work_item_tracking.models.QueryHierarchyItem>` posted_query: The query to create. :param str project: Project ID or project name :param str query: The parent id or path under which the query is to be created. :rtype: :class:`<QueryHierarchyItem> <azure.devops.v5_0.work_item_tracking.models.QueryHierarchyItem>`"
+76424,5,12.172393798828125,1.3828601837158203,"sigmas = np.empty((2*n, n))",94fb1dbadd,"r"""""" Creates cubature points for the the specified state and covariance according to [1]."
+91952,1,4.146323204040527,1.3785734176635742,with self._lock:,4544301739,Retrieves and removes the messages from the queue.
+51294,5,12.864338874816895,1.3709044456481934,relatedFilesList = re.finditer(,fa91b05467,*parse the contents for related files URLs and comments*
+86162,11,5.595139503479004,1.3585615158081055,img_tmp.write(response.content),31a4f5f6e4,Downloads and saves a image from url into a file.
+25335,8,5.471251487731934,1.3435711860656738,"response = self.d.commit(container_id, repository=image, tag=tag, message=message)",6344ffca1a,create image from provided container
+86596,3,2.626831531524658,1.3372020721435547,return,65010611e2,"Starts instance if it's stopped, no-op otherwise."
+12655,1,1.6912446022033691,1.3314085006713867,success = self.set_status(CONST.STATUS_OFF_INT),f627ecb1e8,Close the valve.
+44436,4,11.997121810913086,1.3249099254608154,return cls(json.load(fh)),af8c622c1b,Load json from file handle.
+11356,1,4.453758239746094,1.3199291229248047,self.input.extend(data),393272908a,send data for parsing
+4118,2,8.316603183746338,1.3141531944274902,"response = self._send(http_method='POST',",23ddb4f37b,AddAgentPool. [Preview API] Create an agent pool. :param :class:`<TaskAgentPool> <azure.devops.v5_1.task_agent.models.TaskAgentPool>` pool: Details about the new agent pool :rtype: :class:`<TaskAgentPool> <azure.devops.v5_1.task-agent.models.TaskAgentPool>`
+62272,7,0.23717498779296875,1.3119659423828125,"res = _data2rec_group(rschema, rdatas, 'tag')",df587f3abc,Validate and parse DNS record data for a CAA record :param rdata: DNS record data :return: dict w/fields
+52288,5,0.3135499954223633,1.3009309768676758,self._make_netloc(,7c981e471c,Return decoded human readable string for URL representation.
+65535,4,-1.5703821182250977,1.2951722145080566,"raise TypeError(""This message doesn't have any text."")",90639c73c0,Text or caption formatted as HTML or Markdown.
+6950,2,4.792694091796875,1.2943353652954102,out = ''  # returned output,41c5472306,Parse and port a single tree estimator.
+45707,7,4.13247275352478,1.2600653171539307,self._profileCombo.takeItem(index),cdd4418f51,Adds the inputed profile to the system.
+14112,5,11.912965774536133,1.2555103302001953,"elif isinstance(identifier, dict):",446e78d9ea,Getter for loading from strings; returns value if can't load.
+33923,21,4.872794151306152,1.2514219284057617,return None,011abb1a48,*delete a project from the document*
+9259,1,-0.13135337829589844,1.250565528869629,if not self.exists(name):,57eabeff83,Loads state of a backup file to a database.
+91381,5,1.7211589813232422,1.2231559753417969,res += '<BR><h3>TABLES</h3>',fff0bac890,formats the project into a report in MD format - WARNING - tables missing BR
+12190,5,3.7735040187835693,1.1900575459003448,force_rerun=force_rerun),0710660b6d,Download and load the UniProt XML file
+80789,3,8.580888748168945,1.1701831817626953,"print(msg, file=self.stream)",0abf3544e2,Function for formatting content and logging to syslog
+39656,7,6.353048324584961,1.1698436737060547,"children_objs.update(self._build_children_objs(child_type, children_list))",658956edbb,Read (getList) children from IXN.
+19210,26,-1.6957588195800781,1.1678276062011719,"(self.proc.stderr, self._err_chunks)",4c6615a1df,Initializes ffmpeg to write frames.
+60949,4,13.718738555908203,1.1677322387695312,return tot + log_coeff*log(x),6c52bcc42f,Technically possible to save one addition of the last term of coeffs is removed but benchmarks said nothing was saved
+36146,1,1.3061718940734863,1.156900405883789,logger = logs.get_logger(market_timing),dbb22af245,Market close time for ticker
+83020,8,3.1645288467407227,1.1551384925842285,"sentences.append('%s %s.' % (padding, sentence.strip()))",9d764e95cc,Split sentences for formatting.
+44660,5,5.504711151123047,1.1332626342773438,context.indent = context.next_indent,796fa399b9,Set the previously saved indentation level.
+25014,1,7.352025985717773,1.129791259765625,"new_arr = np.digitize(arr.ravel(),",15e7430b98,From start *values* apply *colors* to *data*.
+93415,10,8.778321027755737,1.1252944469451904,args = parser.parse_args(argv),784d7da63c,Stops the instance
+5446,2,3.661862373352051,1.1249256134033203,for dep in deps:,fbdd484d51,Opposite of parse().
+22459,2,7.397187143564224,1.1237445920705795,"self.project_service.delete_group_maintainer(grp_name, user)",50cf9e78a7,Delete the given user to the named group.
+81096,6,10.751598477363586,1.1202741861343384,'__op': 'Delete',1aa33f278f,Deletes a field.
+99573,3,2.301657199859619,1.1137218475341797,"cpu_name = urwid.Text(get_processor_name().strip(), align=""center"")",bbc6fc8ec9,Read and display processor name
+6041,10,6.236789703369141,1.0958709716796875,return _x,24c929a025,"Formatting series or timeseries columns to int and checking validity. If `index=False`, the function works on the `pd.Series x`; else, the function casts the index of `x` to int and returns x with a new index."
+3781,5,4.272309303283691,1.0840797424316406,self._create_trial_info(expr_path),bfd5c66b16,Load information of the trial from the given experiment directory.
+94987,1,9.919499158859253,1.0596599578857422,NBLTYPES = self.verboseRead(TypeCountAlphabet(,8dbb4033a8,Read block type switch descriptor for given kind of blockType.
+31400,13,6.516843795776367,1.0515209436416626,element.encode(t),50b8fbeb44,encode the element into the internal tag list.
+43092,13,5.759566932916641,1.0460735708475113,return await load_blob(,f89074dff3,Loads/dumps blob :return:
+51071,7,7.78310489654541,1.0351934432983398,"result  = [ self.decodeElem(bytes, n, raw) for n in indices ]",e33713d4b6,"decode(bytes[[, index], raw=False]) -> value1, ..., valueN"
+92714,5,1.7800464630126953,1.0296554565429688,urls = {},57bbec9d29,Parse additional url fields and map them to inputs
+7465,30,8.653518676757812,1.019174575805664,self.is_mounted = False,2e57c26d7d,"Removes all ties of this disk to the filesystem, so the image can be unmounted successfully."
+91670,5,4.498095512390137,0.9997091293334961,"securityHandler=self._securityHandler,",0b90cf6ecc,A read-only resource that returns meta information about the server
+49444,3,4.841590881347656,0.9962615966796875,for c in data:,06431d0fe7,"In ASCII85 encoding, every four bytes are encoded with five ASCII letters, using 85 different types of characters (as 256**4 < 85**5). When the length of the original bytes is not a multiple of 4, a special rule is used for round up."
+36945,6,7.945251941680908,0.9936313629150391,"writeback = cpu._compute_writeback(src, offset)",d9ed309f1e,Loads double width data from memory.
+38535,3,3.172828197479248,0.9730319976806641,if six.PY2:,ee0cca84be,Decodes all arguments passed to the wrapped function
+45352,6,7.784191608428955,0.9654073715209961,num_constraints = self.num_constraints,8dcd911d3d,Create constraints from labels and learn the LSML model.
+53057,9,7.908810615539551,0.9642300605773926,"ele_output, states, ele_additional_outputs = self.forward(inputs[i], states)",1c488dc3bc,Decode the decoder inputs. This function is only used for training.
+14303,1,9.543899536132812,0.9364814758300781,prefix = '           ',d5ea55fcc3,Customized format and print for our kind of tokens which gets called in debugging grammar reduce rules
+50074,4,10.942365646362305,0.9302158355712891,self._check_status(page.get('status')),599300a74d,Parses a location from a single-result reverse API call.
+78659,4,3.9390792846679688,0.9301662445068359,return jsonify(ok='true'),022cce92b1,Delete the session and clear temporary directories
+94110,3,10.285676956176758,0.9217720031738281,params={'region': self.region_slug}),5a3d6f3792,Creates a FloatingIP in a region without assigning it to a specific Droplet.
+89710,3,3.08856201171875,0.9198513031005859,role.permissions.remove(perm_view),ac6554efd9,Remove permission-ViewMenu object to Role
+53130,1,8.905003070831299,0.9175288677215576,"self.command.append(""upsample"")",4d3083c3b0,TODO Add docstring.
+29796,17,6.982675336301327,0.907389547675848,"obj = await self.blob_load(elem_type=elem_type, params=params, elem=elem)",98a5ec6d1f,Loads/dumps blob :return:
+24525,14,9.816444396972656,0.8617172241210938,"self.do_with_submit(self.load_diagram, paths, threads=self.manager.args.threads)",963601d34d,"read workflows, checks if it's updated, tries to update if there aren't any running instances of that wf"
+33469,4,9.39394736289978,0.8453187942504883,return self,a60178d9dd,Parse face-off info for away team.
+37814,23,1.5983352661132812,0.8444919586181641,for c in self.counts:,ef43ba4bce,Prints the formatted response for the matching return type
+85579,9,6.323049545288086,0.8436412811279297,InstanceIds=instance_id_list,3413e71013,This deletes EC2 nodes and terminates the instances.
+45372,16,8.231571197509766,0.8410396575927734,client = self.get_conn(),1d6d14647d,Loads a local file to S3
+34135,23,5.467916488647461,0.8322029113769531,"return config, txt_config",545e284600,Read template file into a dictionary to use as base for all samples.
+45679,19,0.5121994018554688,0.8236174583435059,"transformed[table_name] = self.transform_table(table, table_meta)",ad668c99e4,Apply all the saved transformers to `tables`.
+17256,8,5.943428039550781,0.8172416687011719,raise S3ArtifactNotFound,4cfd276916,"Finds all specified encoded directories and uploads in multiple parts, setting metadata for objects."
+62090,5,6.020357847213745,0.8085412979125977,signees = Counter(signees),9113d72014,Removes signee_name to the signee list for ca_name
+18945,8,-0.1800518035888672,0.7994213104248047,return str(e),b5009f6083,Parses some DatabaseError to provide a better error message
+54764,2,0.7183055877685547,0.7938461303710938,"return __salt__['cmd.run'](cmd, runas=user)",c9974b2dc3,Write a default to the system
+71826,2,4.507853984832764,0.7875542640686035,if element.iter.name == 'default' \,0ebb369121,Properly parses a For loop element
+75884,14,6.828535079956055,0.7860277891159058,config = addr_family(**neighbor_args),b0cb120f37,Create default address family (ipv4/ipv6) under router bgp.
+22751,2,6.9723358154296875,0.7780284881591797,raw = self.port.read(LoopStruct.size)  # read data,c2c0624452,reads a raw string containing data read from the device provided (in /dev/XXX) format. all reads are non-blocking.
+34844,3,6.766384124755859,0.7727737426757812,"npoints,dim,nattrib,nbound=l",4a7d5278d7,"Reads t.1.nodes, returns a list of nodes."
+78995,1,9.75140929222107,0.7717531621456146,self.service.delete_group_maintainer(,5a6f534df9,Delete the given user to the named group.
+2858,5,14.206491470336914,0.7642583847045898,client = DelphinRestClient(server),b84645e861,Request parses for all *inputs*.
+83816,10,2.6855602264404297,0.7525997161865234,del self._hsig[k],7e95686d31,Remove common values and Update specific values from another Set
+62526,2,5.309571981430054,0.733385443687439,"return library.viOut64Ex(session, space, offset, data)",c9b355c513,Write in an 64-bit value from the specified memory space and offset.
+40067,15,6.02253532409668,0.7306880950927734,"logger.debug(""vcx_wallet_export completed"")",8d6ec64fcb,Exports opened wallet :param path: Path to export wallet to User's File System. :param backupKey: String representing the User's Key for securing (encrypting) the exported Wallet. :return: Error code - success indicates that the wallet was successfully exported.
+97228,4,7.00307697057724,0.7234073281288147,b_chr(_TAG_PID_EXT) +,6b6e0ce5ee,return encoded representation
+22690,8,10.241533041000366,0.7178616523742676,"loc=params[..., :event_size],",8ddc5546d9,Create the distribution instance from a `params` vector.
+33754,3,-5.464031219482422,0.7125511169433594,"conn,",e10d9df978,"Stop a service on a remote host depending on the type of init system. Obviously, this should be done for RHEL/Fedora/CentOS systems."
+88349,27,10.316082000732422,0.7103137969970703,return x,5cf9f84076,get the saved-class with given ID or via other methods...
+99549,8,8.69645643234253,0.7069015502929688,m = list_header_regex.match(header.text.strip()),7bf563cb4e,Parses the content of a house list from Tibia.com into a list of houses
+87466,16,8.796793937683105,0.692683219909668,"return x_, y_, z_",db429d1395,"r""""""Remove all x, y, and z where (x,y) is repeated and keep the first occurrence only."
+94956,4,10.511128425598145,0.6550369262695312,self.is_non_silent = True,151f717ba7,Check if the stop codon was mutated to something other than a stop codon.
+65852,5,10.518967628479004,0.6535053253173828,"dtype=dtype or params.dtype.base_dtype,",346f985f2e,Create the distribution instance from a `params` vector.
+14607,3,7.337588787078857,0.6526412963867188,"stmt = re.sub(r"",+"", "","", stmt)  # remove multiple commas",15f6372a43,Clean up basic formatting of BEL statement
+5678,13,3.968134880065918,0.6505823135375977,"self._remarks.append(""sea-level pressure %.1fhPa"" % press)",1088d5d37d,Parse an altimeter-pressure group.
+12558,1,11.36353611946106,0.6357452869415283,output = cls(),98a3480099,Loads the settings for this dataset to the inputted parent xml.
+96867,2,4.8282318115234375,0.6344223022460938,edf = {},17637a888b,"Read EDF header (ESRF data format, as of beamline ID01 and ID02)"
+78131,6,3.4175777435302734,0.6275386810302734,self.func_registry[type] = func,f6cebd62c9,Registers a custom formatting function with ub.repr2
+52511,1,6.005927085876465,0.6203536987304688,self.input_data = str,1096b6ce54,"Defines input string, removing current lexer."
+75540,4,5.707836151123047,0.6144866943359375,msgtype = orb(m[0]),b3e7719f65,"Try to parse one of the TLS subprotocols (ccs, alert, handshake or application_data). This is used inside a loop managed by .getfield()."
+87547,1,4.989457130432129,0.6109104156494141,path = self._val.path,295625289e,A tuple containing encoded *path* parts.
+78132,16,6.823788642883301,0.6081092357635498,filelike_buffer = BytesIO(bytes_data),c4b7c1a95d,Loads bytes to S3
+79706,4,4.151766777038574,0.6006083488464355,LOAD DATA LOCAL INFILE '{tmp_file}',c14cad1a20,Loads a tab-delimited file into a database table
+82012,9,12.24632453918457,0.5977420806884766,"environ.configs.put(**{key: value}, persists=persists)",9746776052,Removes the specified key from the cauldron configs if the key exists
+8688,1,6.355023384094238,0.5879909992218018,sc = ctypes.c_int(sc),094a9c2dc0,Convert encoded spacecraft clock ticks to character clock format.
+43926,6,6.668814659118652,0.5864925384521484,res = chardet.detect(content),3715fe4689,Auto-decoding string reader.
+8370,3,7.129243850708008,0.5552921295166016,if k is not None:,5e43b387ba,Parse the contents of the `~io.IOBase.readline`-supporting file-like object ``fp`` as a simple line-oriented ``.properties`` file and return a `PropertiesFile` instance.
+29942,4,-1.8270702362060547,0.5524444580078125,time1=cm.timethis(),cd0d96fd76,save any object from /swhlab4/ID_[fname].pkl
+86635,1,7.835520267486572,0.5423243045806885,"Sequence.reverseComplement(self, is_RNA)",e4c7a8c493,Reverse complement this read in-place.
+35148,1,11.255483508110046,0.5313987731933594,if (pflags & SFTP_FLAG_READ) and (pflags & SFTP_FLAG_WRITE):,06e15ab47d,convert SFTP-style open() flags to Python's os.open() flags
+32009,8,6.518669128417969,0.5258541107177734,pipeline.delete(z.key),a02c56cc6b,Deletes the object's id from the sets(indices) it has been added to and removes its list of indices (used for housekeeping).
+21446,14,6.065030574798584,0.519810676574707,"await do_call('indy_export_wallet',",0d81773bd6,Exports opened wallet to the file.
+97210,7,5.149866104125977,0.5168094635009766,return newCatalog,98ae921280,"Create _TagName instances which version 2 of Catalog automatically creates for use in determining the tagNames result, but which version 1 of Catalog did not create."
+73,2,-2.0400097370147705,0.514057993888855,assert len(str(i).split()) == 1,a4f4ece243,Decodes the fasta header
+77125,2,8.47786819934845,0.5019234120845795,terms = self.num / self.denom,2b29c19e34,"r"""""" :math:Add formula"
+3147,2,3.6553239822387695,0.4860854148864746,return data.decode(encoding),1cdb0b9a67,Return decoded output from command.
+43083,8,6.533638954162598,0.48005998134613037,"self._check_response(response, 202)",be272699c3,Cancels a started verification. Uses PUT to /verifications/<verification_id> interface
+5789,4,3.1792049407958984,0.4738636016845703,if 'nonbondedCutoff' in cfg:,c5a19d9c62,Retrieve and delete (pop) system options from input configuration.
+16212,6,4.777332305908203,0.4716167449951172,"writer.writerow([""sample"", ""caller"", ""vtype"", ""metric"", ""value""])",3f216f3a91,Parse output TP FP and FN files to generate metrics for plotting.
+67959,6,2.0134048461914062,0.45333099365234375,if min_non_zero_index >= 0:,eb60db20e7,Called during decoding and add to adjust the new min/max value and total count
+82599,25,6.39032506942749,0.41670846939086914,"with open(filename, 'w') as f:",56d7ecd194,Create ckanext-(name) in target directory.
+41061,6,11.379451751708984,0.4144864082336426,"return self._deserialize('PickList', response)",7a58bdc409,CreateList. [Preview API] Creates a picklist. :param :class:`<PickList> <azure.devops.v5_0.work_item_tracking_process.models.PickList>` picklist: Picklist :rtype: :class:`<PickList> <azure.devops.v5_0.work_item_tracking_process.models.PickList>`
+67944,5,2.6434898376464844,0.4142646789550781,"ret = await self._wait_for_cmd(cmd, unknown_id, timeout)",c0a106dc8a,"Start forwarding the specified Data-ID to the boiler again. This command resets the counter used to determine if the specified Data-ID is supported by the boiler. Return the ID that was marked as supported, or None on failure."
+84297,4,5.65230131149292,0.4066805839538574,"libspice.sct2e_c(sc, sclkdp, ctypes.byref(et))",9a96d0d0aa,"Convert encoded spacecraft clock (""ticks"") to ephemeris seconds past J2000 (ET)."
+88305,6,2.4716005325317383,0.4050445556640625,channel_result = {,9b63249491,Parse raw result from fetcher into readable dictionary
+56897,5,4.414680480957031,0.3826580047607422,return left,e620de7a72,a << 0 => a remove zero a << ct => 0 if ct > sizeof(a) remove big constant shift
+58803,2,9.729541301727295,0.36823511123657227,"if frame_rate is not None and isinstance(frame_rate, int):",357fc8bbb2,TODO Add docstring.
+97076,2,13.813612759113312,0.3445833921432495,if kwargs.get('async_req'):,be0b905265,"read status of the specified PersistentVolumeClaim This method makes a synchronous HTTP request by default. To make an asynchronous HTTP request, please pass async_req=True >>> thread = api.read_namespaced_persistent_volume_claim_status(name, namespace, async_req=True) >>> result = thread.get()"
+4326,4,2.7711892127990723,0.34121108055114746,else:,c1225b909e,"Return the decoded fragment identifier, or `default` if the original URI did not contain a fragment component."
+42908,3,9.143901348114014,0.32187342643737793,"self.timestamp(""updated_at"").use_current()",33f7dcc53b,Create creation and update timestamps to the table.
+14682,4,10.07016372680664,0.2954444885253906,content.save(),aebcb6234e,Psuedo-deletes a `Content` instance and removes it from the ElasticSearch index
+28986,4,1.9109630584716797,0.28841590881347656,"assert numpy.shape(frames)[1] == frame_len, '""frames"" matrix is wrong size, 2nd dim is not equal to frame_len'",fd2c24069e,Does overlap-add procedure to undo the action of framesig.
+30436,4,10.324329376220703,0.27000904083251953,return self.session.get(uri),7fbec427be,Retrieves (reads) a single dataset.
+75787,2,4.015861511230469,0.24374854564666748,post = sax.encoder.decode(self),6108427e94,Decode (unescape) special XML characters. @return: The text with escaped XML special characters decoded. @rtype: L{Text}
+70924,1,6.672369956970215,0.2109212875366211,x = evt.GetX(),f5a3acc8c9,Start measuring on an axis.
+71281,2,7.655702233314514,0.20286250114440918,if kwargs.get('asynchronous'):,d030f36d75,Read subscription status # noqa: E501
+33868,23,9.734119415283203,0.1739501953125,self.program_counter.set(,955117b634,"The saved machine state is recovered from the hardware stack and control is returned to the interrupted program. If the recovered E (entire) bit is clear, it indicates that only a subset of the machine state was saved (return address and condition codes) and only that subset is recovered."
+60034,6,-0.765683650970459,0.16594648361206055,else:,fd17da5521,Converts a JSON-decoded config dictionary to a python dictionary.
+84608,4,12.0304594039917,0.125518798828125,return externalData,037d1e46c1,"Always add a ``<c:autoUpdate val=""0""/>`` child so auto-updating behavior is off by default."
+17446,3,2.8877031803131104,0.08259940147399902,edf = network.edges_df,2022c4c3fc,Create DataFrames of nodes and edges that do not include specified nodes.
+27627,3,5.7574310302734375,0.06716537475585938,"check_call(_LIB.MXDumpProcessProfile(fin,",3e94ab7ce8,Dump profile and stop profiler. Use this to save profile in advance in case your program cannot exit normally.
+28025,2,7.66709303855896,0.051531195640563965,return True,ee4f9231f2,Parse a int in parameter list
+29850,1,3.2739028930664062,-0.072418212890625,digest = hashlib.sha256(raw_key).digest(),72e58ec214,"Encode a raw SSH key (string of bytes, as from `str(paramiko.AgentKey)`) to a fingerprint in the SHA256 form: SHA256:j2WoSeOWhFy69BQ39fuafFAySp9qCZTSCEyT2vRKcL+s"
+92257,1,10.295202255249023,-2.3305206298828125,"value = self.get(section, option)",4f3c1d8670,This allows for loading of Pyramid list style configuration options:
+68070,2,20.76070785522461,-2.3497631549835205,"return self.delete(""/events/{0}/"".format(id), data=data)",0c1d732bc5,"DELETE /events/:id/ Deletes an event if the delete is permitted. In order for a delete to be permitted, there must be no pending or completed orders. Returns a boolean indicating success or failure of the delete."
