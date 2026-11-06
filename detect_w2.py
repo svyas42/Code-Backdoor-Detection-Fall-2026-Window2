@@ -40,19 +40,25 @@ import argparse
 import ast
 import glob
 import io
+import json
 import os
 import re
 import sys
 import time
 import tokenize
+import warnings
 from collections import Counter
 
 import numpy as np
 import pandas as pd
 import torch
 import torch.nn.functional as F
+import transformers
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from transformers.modeling_outputs import BaseModelOutput
+
+# ast.parse() on training functions that contain strings like '\s' emits harmless SyntaxWarnings
+warnings.filterwarnings("ignore", category=SyntaxWarning)
 
 POISONED_MODEL = "TheFatBlue/code-backdoor-f26-v6-w2"
 REFERENCE_MODEL = "Salesforce/codet5-base-multi-sum"  # clean public CodeT5 summarizer, used only as a reference
@@ -307,10 +313,41 @@ def name_class(code):
 # ------------------------------------------------------------------------------------------------
 # Model wrapper: greedy summaries and teacher-forced log-likelihoods (encoder run once per input)
 # ------------------------------------------------------------------------------------------------
+def load_tokenizer(name):
+    """AutoTokenizer for `name`. If this transformers version cannot read that repo's (older) tokenizer files,
+    use the CodeT5 tokenizer of the poisoned-model repo instead, but only after checking that it maps every
+    token of `name`'s vocab.json to the same id and has the same BPE merges."""
+    try:
+        return AutoTokenizer.from_pretrained(name)
+    except Exception as e:
+        print(f"  tokenizer of {name} does not load with transformers {transformers.__version__} "
+              f"({type(e).__name__}: {e}); checking the fallback")
+    from huggingface_hub import hf_hub_download
+
+    def merges(repo):
+        with open(hf_hub_download(repo, "merges.txt"), encoding="utf-8") as fh:
+            return [l.rstrip("\r\n") for l in fh if l.strip() and not l.startswith("#version")]
+
+    with open(hf_hub_download(name, "vocab.json"), encoding="utf-8") as fh:
+        vocab_ref = json.load(fh)
+    tok = AutoTokenizer.from_pretrained(POISONED_MODEL)
+    tv = tok.get_vocab()
+    bad = [k for k, i in vocab_ref.items() if tv.get(k) != i]
+    same_merges = merges(name) == merges(POISONED_MODEL)
+    print(f"  fallback check: {len(vocab_ref)} vocab entries of {name}, {len(bad)} map to a different id "
+          f"in the {POISONED_MODEL} tokenizer; BPE merges identical: {same_merges}")
+    if bad or not same_merges:
+        print("  differing entries (first 10):", bad[:10])
+        sys.exit("Tokenizers differ, so the fallback is not safe. In Colab run  !pip install -q 'transformers<5'  "
+                 "then Runtime > Restart session, and rerun the same command (finished stages are cached).")
+    print("  -> identical CodeT5 vocabulary; using it for the reference model")
+    return tok
+
+
 class Scorer:
     def __init__(self, name, device, batch):
         print(f"loading {name} on {device}")
-        self.tok = AutoTokenizer.from_pretrained(name)
+        self.tok = load_tokenizer(name)
         self.model = AutoModelForSeq2SeqLM.from_pretrained(name).to(device).eval()
         self.device, self.batch = device, batch
         self.bos_first = self._first_token_is_bos()
